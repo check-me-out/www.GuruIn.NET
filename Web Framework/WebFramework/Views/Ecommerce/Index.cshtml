@@ -1,0 +1,38 @@
+﻿@model string
+
+@{
+    Layout = "~/Views/Shared/_filterLayout.cshtml";
+    ViewBag.Title = "Collections";
+}
+
+@section breadcrumbs {
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-1_3x"></i></a></li>
+        <li><a href="@Url.Action("Index", "Ecommerce")">eCommerce</a></li>
+    </ol>
+}
+
+@section pageStyle {
+    <link rel="stylesheet" href="~/Content/AngularJs/angular-csp.css" />
+}
+
+<section ng-app="EcommerceModule">
+
+    <product-list></product-list>
+
+</section>
+
+@section pageScript {
+    <script type="text/javascript">
+        var productListMvcViewModel = { ProductListApiEndpoint: "@Model" };
+    </script>
+    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js" integrity="sha256-xI/qyl9vpwWFOXz7+x/9WkG5j/SVnSw21viy8fWwbeE=" crossorigin="anonymous"></script>
+    <script>(window.jQuery.ui || document.write('<script src="/Content/jQuery/jquery-ui-1.11.4.min.js"><\/script>'));</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js" integrity="sha256-6Sr0HqNgUf/p88g6vsl87CrAnNqiOWhjlY6LS8jeWHA=" crossorigin="anonymous"></script>
+    <script>(window.angular || document.write('<script src="/Content/AngularJs/angular.min.js"><\/script>'));</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.min.js" integrity="sha384-D036DCQcFKVjaInZT7J2WWKtVBAh1JoTqn/yu7nhkc+dsvSFe1w8TsJkqEqc6a3Y" crossorigin="anonymous"></script>
+    <script>(window.Enumerable || document.write('<script src="/Content/jQuery/linq.min.js"><\/script>'));</script>
+
+    <script src="~/Content/Site/Ecommerce/product-list.api.js"></script>
+    <script src="~/Content/Site/Ecommerce/product-list.component.js"></script>
+}

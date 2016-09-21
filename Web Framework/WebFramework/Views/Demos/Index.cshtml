@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Demos";
+}
+
+@section breadcrumbs {
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-1_3x"></i></a></li>
+        <li><a href="/Demos#demo-selection" onclick="return LoadContent('#demo-selection');">Demos</a></li>
+    </ol>
+}
+
+<div id="demo-area">
+</div>
+
+<div class="demo-content">
+    <script type="text/html" id="angular">
+        @Html.Partial("_angular")
+    </script>
+
+    <script type="text/html" id="bootstrap">
+        @Html.Partial("_bootstrap")
+    </script>
+
+    <script type="text/html" id="jasmin">
+        @Html.Partial("_jasmin")
+    </script>
+
+    <script type="text/html" id="type-js">
+        @Html.Partial("_type-js")
+    </script>
+
+    <script type="text/html" id="sass-less">
+        @Html.Partial("_sass-less")
+    </script>
+
+    <script type="text/html" id="react-js">
+        @Html.Partial("_react-js")
+    </script>
+
+    <script type="text/html" id="knockout">
+        @Html.Partial("_knockout")
+    </script>
+
+    <script type="text/html" id="font-awesome">
+        @Html.Partial("_font-awesome")
+    </script>
+
+    <script type="text/html" id="html5">
+        @Html.Partial("_html5")
+    </script>
+
+    <script type="text/html" id="demo-selection">
+        <section>
+            <ul>
+                <li><a href="/Demos#bootstrap" onclick="return LoadContent('#bootstrap');">Bootstrap</a></li>
+                <li><a href="/Demos#angular" onclick="return LoadContent('#angular');">Angular JS</a></li>
+                <li><a href="/Demos#knockout" onclick="return LoadContent('#knockout');">Knockout JS</a></li>
+                <li><a href="/Demos#jasmin" onclick="return LoadContent('#jasmin');">QUnit / Jasmin</a></li>
+                <li><a href="/Demos#type-js" onclick="return LoadContent('#type-js');">Type js</a></li>
+                <li><a href="/Demos#sass-less" onclick="return LoadContent('#sass-less');">Sass / Scss</a></li>
+                <li><a href="/Demos#react-js" onclick="return LoadContent('#react-js');">npm / bower</a></li>
+                <li><a href="/Demos#html5" onclick="return LoadContent('#html5');">HTML 5</a></li>
+                <li><a href="/Demos#font-awesome" onclick="return LoadContent('#font-awesome');">Font Awesome</a></li>
+            </ul>
+        </section>
+    </script>
+
+</div>
+
+@section pageScript {
+    <script type="text/javascript">
+        function LoadContent(id) {
+            var html = $(id).html();
+            $("#demo-area").html(html);
+            return true;
+        }
+
+        RegisterOnload(function () {
+            var id = window.location.hash;
+            if (id) {
+                LoadContent(id);
+            }
+            else {
+                LoadContent('#demo-selection');
+            }
+        });
+    </script>
+}

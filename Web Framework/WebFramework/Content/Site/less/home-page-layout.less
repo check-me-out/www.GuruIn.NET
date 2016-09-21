@@ -1,0 +1,143 @@
+﻿@import "../../Bootstrap/less/variables.less";
+@import "theme.less";
+
+@import "common.less";
+
+main {
+    margin-top: 40px !important;
+}
+
+.banner-container {
+    padding: 25px 0;
+}
+
+.banner {
+    background-image: linear-gradient(to right, #41b3e2, #006bb9);
+    background: #0061b1 url('../../../Images/homepage-banner.png') right no-repeat;
+}
+
+.spacing {
+    height: 260px !important;
+    margin: 0 280px 0 0 !important;
+    padding: 40px 15px 40px 0 !important;
+}
+
+.spacing-small {
+    height: auto !important;
+    margin: 0 !important;
+    padding: 15px !important;
+}
+
+.button-panel {
+    position: relative;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+
+    .links-panel {
+        text-align: justify !important;
+
+        a {
+            font-size: @font-size;
+            margin: 10px !important;
+        }
+    }
+
+    .links-panel-small {
+        display: table-cell;
+        text-align: justify;
+
+        a {
+            font-size: @font-size;
+            margin: 5px;
+            width: 117px;
+        }
+    }
+
+    .links-panel .justify-anchors::after,
+    .links-panel-small .justify-anchors::after {
+        width: 100%;
+        display: inline-block;
+        content: ".";
+        visibility: hidden;
+    }
+}
+
+@image-action-text-color: #eee;//#ffd800
+
+.image-panel {
+    position: absolute;
+    top: -50px;
+    right: -270px;
+    background: #004486 url('../../../Images/homepage-banner-action.png') center no-repeat;
+    border-radius: 5px;
+    width: 280px;
+    height: 280px;
+    border-left: 1px solid #0078D8;
+    border-right: 2px solid #0078D8;
+    padding: 25px 20px 20px 20px;
+    text-align: center;
+    color: @image-action-text-color;
+    font-size: 2.0em;
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+    .welcome-text {
+        text-shadow: 10px 6px 2px #222;
+    }
+
+    .brand-name {
+        color: lighten(@image-action-text-color, 15%);
+        font-weight: 600;
+        text-shadow: 15px 6px 2px #222;
+        //text-shadow: 20px 12px 2px #111;
+        white-space: nowrap;
+    }
+
+    .brand-slogan {
+        text-shadow: 10px 6px 2px #222;
+        //text-shadow: 6px 4px 2px #000;
+    }
+
+    div {
+        margin-top: 20px;
+    }
+}
+
+.image-panel-small {
+    background: #004486 url('../../../Images/homepage-banner-action.png') center no-repeat;
+    border-radius: 5px;
+    height: auto;
+    margin: 0 0 -35px 0;
+    border-top: 1px solid #0078D8;
+    border-left: 1px solid #0078D8;
+    border-right: 2px solid #0078D8;
+    border-bottom: 2px solid #0078D8;
+    padding: 0 0 20px 0;
+    text-align: center;
+    color: @image-action-text-color;
+    font-size: 1.2em;
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+    .welcome-text {
+        display: block;
+        text-shadow: 10px 6px 2px #222;
+    }
+
+    .brand-name {
+        color: lighten(@image-action-text-color, 15%);
+        font-weight: 600;
+        text-shadow: 10px 6px 2px #222;
+        //text-shadow: 20px 12px 2px #111;
+        white-space: nowrap;
+        display: block;
+    }
+
+    .brand-slogan {
+        display: block;
+        text-shadow: 10px 6px 2px #222;
+        //text-shadow: 6px 4px 2px #000;
+    }
+
+    div {
+        margin-top: 10px;
+    }
+}

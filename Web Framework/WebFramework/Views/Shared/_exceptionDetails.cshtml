@@ -1,0 +1,53 @@
+﻿@model System.Exception
+
+<div>
+    @if (Model != null && !string.IsNullOrWhiteSpace(Model.Message))
+    {
+        <h4>Exception Message:</h4>
+        <h6>@Model.Message</h6>
+    }
+
+    @if (Model.InnerException != null && !string.IsNullOrWhiteSpace(Model.InnerException.Message))
+    {
+        <h5 style="padding-left: 15px">Inner Exception Message:</h5>
+        <h6 style="padding-left: 15px">@Model.InnerException.Message</h6>
+        @Html.HiddenFor(model => model.InnerException.Message)
+    }
+
+    @if (Model.InnerException != null && Model.InnerException.InnerException != null && !string.IsNullOrWhiteSpace(Model.InnerException.InnerException.Message))
+    {
+        <h5 style="padding-left: 30px">2<sup>nd</sup> Level Inner Exception Message:</h5>
+        <h6 style="padding-left: 30px">@Model.InnerException.InnerException.Message</h6>
+    }
+
+    @if (Model != null && !string.IsNullOrWhiteSpace(Model.StackTrace))
+    {
+        <p><b>Stack Trace:</b></p>
+        <div style="padding-bottom: 30px; max-height: 350px; overflow-y: auto">
+            @{ var stackTrace = Model.StackTrace.Split(new[] { " at " }, StringSplitOptions.RemoveEmptyEntries); }
+            @for (var i = 1; i < stackTrace.Count(); i++)
+            {
+                <div><code>@i: @stackTrace[i]</code></div>
+            }
+        </div>
+    }
+
+    @if (Model != null && !string.IsNullOrWhiteSpace((string)Model.Data["stackTrace"]))
+    {
+        <p><b>Stack Trace:</b></p>
+        <div style="padding-bottom: 30px; max-height: 350px; overflow-y: auto">
+            @{ var stackTrace = ((string)Model.Data["stackTrace"]).Split(new[] { " at " }, StringSplitOptions.RemoveEmptyEntries); }
+            @for (var i = 1; i < stackTrace.Count(); i++)
+            {
+                <div><code>@i: @stackTrace[i]</code></div>
+            }
+        </div>
+    }
+
+    @if (Model == null ||
+            (string.IsNullOrWhiteSpace(Model.StackTrace) &&
+            string.IsNullOrWhiteSpace((string)Model.Data["stackTrace"])))
+    {
+        <div style="min-height: 350px"></div>
+    }
+</div>

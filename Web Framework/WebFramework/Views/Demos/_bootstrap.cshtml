@@ -1,0 +1,83 @@
+﻿<section>
+    <h3>Bootstrap</h3>
+    <hr />
+    <p>
+        <i class="fa fa-check-square-o fa-1_2x"></i>&nbsp;&nbsp;Header dropdown menu (<code>.navbar-inverse</code> theme) is customized to feature <strong>multi-level dropdown menu</strong> options on hover.
+    </p>
+    <p>
+        <i class="fa fa-check-square-o fa-1_2x"></i>&nbsp;&nbsp;
+        Custom alert implementation using <strong>Modal</strong> feature with <strong>Panel</strong> elements. Sample alerts:
+        <a href="#" onclick="alertify('A status message to demonstrate this simple popup.', 'Success'); return false;">success</a>,
+        <a href="#" onclick="alertify('A status message to demonstrate this simple popup.', 'Error'); return false;">error</a>, &
+        <a href="#" onclick="alertify('A status message to demonstrate this simple popup.', 'Info', 'Custom title here'); return false;">info</a>.
+    </p>
+    <p>
+        <i class="fa fa-check-square-o fa-1_2x"></i>&nbsp;&nbsp;Features like Navbars & Breadcrumbs,
+        @Html.ActionLink("Carousel", "Index", "Dashboard", null, new { target = "_blank" }) &
+        @Html.ActionLink("Jumbotron", "Index", "Home", null, new { target = "_blank" }) (demo buttons container),
+        collapsable @Html.ActionLink("Accordion", "Index", "Home", null, new { target = "_blank" }) &
+        @Html.ActionLink("List groups", "Index", "GDrive", null, new { target = "_blank" }) (needs signing in),
+        <a href="#" onclick="alertify('An alert using Panels (.panel, .panel-heading, .panel-body).', 'Success', 'Basic example of panels'); return false;">Panels</a> &
+        @Html.ActionLink("Badges", "AllPosts", "Blog", null, new { area = "Blog", target = "_blank" }), etc.
+        are all used where appropriate.
+    </p>
+    <p>
+        <i class="fa fa-check-square-o fa-1_2x"></i>&nbsp;&nbsp;Bootstrap (and many other 3<sup>rd</sup> party libraries) optimally loaded via <strong>CDN securely</strong> (using TLS & <a href="https://www.srihash.org/" target="_blank">SRI Hash</a>), with any <strong>customizations made locally</strong> extending their LESS source code.
+    </p>
+    <p>
+        <i class="fa fa-check-square-o fa-1_2x"></i>&nbsp;&nbsp;<strong>Fallback mechanism</strong> for Bootstrap CDN is acheived by checking if the below element is visible, and loading vanilla Bootstrap CSS from local hosting server if so.
+        <br />
+        <pre><span style="color: blue">&lt;</span><span style="color: maroon">div</span> <span style="color: red">id</span>=<span style="color: blue">"bootstrap-cdn-down"</span> <span style="color: red">class</span>=<span style="color: blue">"hidden"&gt;</span><span style="color: blue">&lt;/</span><span style="color: maroon">div</span><span style="color: blue">&gt;</span> <span style="color: green">&lt;!-- Make sure you do NOT define a "hidden" style changing visibility! --&gt;</span></pre>
+    </p>
+    <p>
+        <i class="fa fa-check-square-o fa-1_2x"></i>&nbsp;&nbsp;
+        New <strong>custom buttons</strong> added:
+        <span class="btn btn-custom-black btn-xs">btn-custom-black</span>
+        <span class="btn btn-custom-failure btn-xs">btn-custom-failure</span>
+        <span class="btn btn-custom-default btn-md">btn-custom-default</span>
+        <span class="btn btn-custom-metallic btn-md">btn-custom-metallic</span>
+        <span class="btn btn-custom-success btn-lg">btn-custom-success</span>
+    </p>
+    <p>
+        <i class="fa fa-check-square-o fa-1_2x"></i>&nbsp;&nbsp;
+        Complete <strong>vanilla Bootstrap</strong> retained, including buttons:
+        <span class="btn btn-danger btn-md">btn-danger</span>
+        <span class="btn btn-warning btn-md">btn-warning</span>
+        <span class="btn btn-default btn-md">btn-default</span>
+        <span class="btn btn-info btn-md">btn-info</span>
+        <span class="btn btn-primary btn-md">btn-primary</span>
+        <span class="btn btn-success btn-md">btn-success</span>
+    </p>
+    <p>
+        <i class="fa fa-check-square-o fa-1_2x"></i>&nbsp;&nbsp;
+        <strong>Responsiveness</strong>:
+        <br />
+        <div style="padding-left: 50px;">
+            <div style="padding: 20px 0">
+                <i class="fa fa-circle fa-0_8x"></i> <strong>Mobile View - XS</strong>
+                <br />
+                <br />
+                <img class="img-thumbnail" src="~/Images/Demos/1. Mobile - XS.jpg" alt="Mobile View" title="Mobile View - XS" width="320" />
+            </div>
+            <div style="padding: 20px 0">
+                <i class="fa fa-circle fa-0_8x"></i> <strong>Tablet Portrait - SM</strong>
+                <br />
+                <br />
+                <img class="img-thumbnail" src="~/Images/Demos/2. Tablet - SM.jpg" alt="Tablet Portrait" title="Tablet Portrait - SM" width="768" />
+            </div>
+            <div style="padding: 20px 0">
+                <i class="fa fa-circle fa-0_8x"></i> <strong>Tablet Landscape - MD</strong>
+                <br />
+                <br />
+                <img class="img-thumbnail" src="~/Images/Demos/3. Tablet - MD.jpg" alt="Tablet Landscape" title="Tablet Landscape - MD" width="1024" />
+            </div>
+            <div style="padding: 20px 0">
+                <i class="fa fa-circle fa-0_8x"></i> <strong>Laptop - LG</strong>
+                <br />
+                <br />
+                <img class="img-thumbnail" src="~/Images/Demos/4. Laptop - LG.png" alt="Laptop View" title="Laptop View - LG" width="1280" />
+            </div>
+        </div>
+    </p>
+    <p><strong>Happy Inspecting (F12)!</strong></p>
+</section>

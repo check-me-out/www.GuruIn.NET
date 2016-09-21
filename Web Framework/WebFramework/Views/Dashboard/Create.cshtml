@@ -1,0 +1,56 @@
+﻿@model WebFramework.Models.Products.Item
+
+@{
+    Layout = "~/Views/Shared/_subMenuLayout.cshtml";
+    ViewBag.Title = "Create";
+}
+
+@section breadcrumbs {
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-1_3x"></i></a></li>
+        <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+        <li class="active"><a href="@Url.Action("Create", "Dashboard")">Create</a></li>
+    </ol>
+}
+
+@section subMenu {
+    @{
+        var count = string.Empty;
+        if (ViewBag.ListCount != null)
+        {
+            count = ((int)ViewBag.ListCount).ToString();
+        }
+    }
+    @Html.Partial("_subMenu", count)
+}
+
+<h1 class="text-uppercase">Create</h1>
+
+@using (Html.BeginForm("Create", "Dashboard", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    <fieldset class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+        <legend>Tabular Model</legend>
+
+        @Html.Partial("_createPartialView", Model)
+
+        <p style="padding-top: 20px; float: right">
+            <a href="@Url.Action("Index", "Dashboard")" class="btn btn-custom-default">
+                Cancel &nbsp; <i class="fa fa-times fa-1_1x"></i>
+            </a>&nbsp; 
+            <button class="btn btn-custom-success">
+                Create &nbsp; <i class="fa fa-plus fa-1_1x"></i>
+            </button>
+        </p>
+    </fieldset>
+}
+
+@section pageStyle {
+    @Styles.Render("~/bundles/form-data-styles")
+}
+
+@section pageScript {
+    @Scripts.Render("~/bundles/form-data-validation")
+}

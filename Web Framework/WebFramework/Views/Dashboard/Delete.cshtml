@@ -1,0 +1,109 @@
+﻿@model WebFramework.Models.Products.Item
+
+@{
+    Layout = "~/Views/Shared/_subMenuLayout.cshtml";
+    ViewBag.Title = "Delete";
+}
+
+@section breadcrumbs {
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-1_3x"></i></a></li>
+        <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+        <li class="active"><a href="@Url.Action("Delete", new { id = Model.Id })">Delete</a></li>
+    </ol>
+}
+
+@section subMenu {
+    @{
+        var count = string.Empty;
+        if (ViewBag.ListCount != null)
+        {
+            count = ((int)ViewBag.ListCount).ToString();
+        }
+    }
+    @Html.Partial("_subMenu", count)
+}
+
+<h1 class="text-uppercase">Delete</h1>
+
+<h3 class="text-capitalize">Are you sure you want to delete this?</h3>
+
+<fieldset class="form-horizontal col-lg-7 col-md-7 col-sm-12 col-xs-12">
+    <legend>Tabular Model</legend>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.Name</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.Description</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CurrentPrice, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">£@Model.CurrentPrice</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NewPrice, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">£@Model.NewPrice</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CreatedBy, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.CreatedBy</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CreatedOn, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.CreatedOn</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UpdatedBy, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.UpdatedBy</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UpdatedOn, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.UpdatedOn</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BuyUrl, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.BuyUrl</p>
+        </div>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <p style="padding-top: 20px; float: right">
+            <a href="@Url.Action("List", "Dashboard")" class="btn btn-custom-default">
+                Cancel &nbsp; <i class="fa fa-times fa-1_2x"></i>
+            </a>&nbsp;
+            <button class="btn btn-custom-success">
+                Delete &nbsp; <i class="fa fa-trash-o fa-1_2x"></i>
+            </button>
+        </p>
+    }
+</fieldset>
+

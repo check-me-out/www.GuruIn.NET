@@ -1,0 +1,156 @@
+﻿@model WebFramework.Models.Products.Item
+
+@{
+    Layout = "~/Views/Shared/_subMenuLayout.cshtml";
+    ViewBag.Title = "Edit";
+}
+
+@section breadcrumbs {
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-1_3x"></i></a></li>
+        <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+        <li class="active"><a href="@Url.Action("Edit", new { id = Model.Id })">Edit</a></li>
+    </ol>
+}
+
+@section subMenu {
+    @{
+        var count = string.Empty;
+        if (ViewBag.ListCount != null)
+        {
+            count = ((int)ViewBag.ListCount).ToString();
+        }
+    }
+    @Html.Partial("_subMenu", count)
+}
+
+<h1 class="text-uppercase">Edit</h1>
+
+@using (Html.BeginForm("Edit", "Dashboard", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    <fieldset class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+        <legend>Edit Item</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "3" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CurrentPrice, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <div class="input-group">
+                    <div class="input-group-addon">£</div>
+                    @Html.TextBoxFor(model => model.CurrentPrice, new { @class = "form-control" })
+                    <div class="input-group-addon">.00</div>
+                </div>
+                @Html.ValidationMessageFor(model => model.CurrentPrice)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NewPrice, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <div class="input-group">
+                    <div class="input-group-addon">£</div>
+                    @Html.TextBoxFor(model => model.NewPrice, new { @class = "form-control" })
+                    <div class="input-group-addon">.00</div>
+                </div>
+                    @Html.ValidationMessageFor(model => model.NewPrice)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageUrl, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                @Html.TextBoxFor(model => model.ImageUrl, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ImageUrl)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BuyUrl, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                @Html.TextBoxFor(model => model.BuyUrl, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.BuyUrl)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreatedBy, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                @Html.TextBoxFor(model => model.CreatedBy, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CreatedBy)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreatedOn, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                @Html.TextBoxFor(model => model.CreatedOn, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CreatedOn)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UpdatedBy, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                @Html.TextBoxFor(model => model.UpdatedBy, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UpdatedBy)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UpdatedOn, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                @Html.TextBoxFor(model => model.UpdatedOn, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UpdatedOn)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-lg-9 col-md-9 col-sm-9">
+                <div class="checkbox">
+                    <label>
+                        <input id="Deleted" name="Deleted" value="@Model.Deleted" type="checkbox">
+                        <b>Deleted</b>
+                    </label>
+                    <span class="field-validation-valid" data-valmsg-for="Deleted" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+        </div>
+
+        <p style="float: right">
+            <a href="@Url.Action("List", "Dashboard")" class="btn btn-custom-default">
+                Cancel &nbsp; <i class="fa fa-times fa-1_1x"></i>
+            </a>&nbsp; 
+            <button class="btn btn-custom-success">
+                Update &nbsp; <i class="fa fa-pencil fa-1_1x"></i>
+            </button>
+        </p>
+    </fieldset>
+}
+
+@section pageStyle {
+    @Styles.Render("~/bundles/form-data-styles")
+}
+
+@section pageScript {
+    @Scripts.Render("~/bundles/form-data-validation")
+}

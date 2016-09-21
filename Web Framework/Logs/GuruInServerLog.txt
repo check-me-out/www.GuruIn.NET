@@ -1,0 +1,12 @@
+
+=================================
+ERROR: 2016-04-21 20:41:02,094
+GuruInServerLog - BaseController.OnException
+
+System.Web.HttpException (0x80004005): Server cannot set status after HTTP headers have been sent.
+   at System.Web.HttpResponse.set_StatusCode(Int32 value)
+   at System.Web.HttpResponseWrapper.set_StatusCode(Int32 value)
+   at System.Web.Mvc.HttpStatusCodeResult.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass29.<BeginInvokeAction>b__1b()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)

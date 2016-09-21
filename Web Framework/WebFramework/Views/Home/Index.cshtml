@@ -1,0 +1,85 @@
+﻿@{
+    Layout = "~/Views/Shared/_homePageLayout.cshtml";
+    ViewBag.Title = "Home";
+}
+
+<div class="banner-container">
+    <div class="banner">
+        <div class="container">
+            <div class="button-panel spacing jumbotron visible-lg visible-md text-center">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 links-panel">
+                        @Html.Partial("_demoButtonsLarge")
+
+                        <div class="image-panel">
+                            <div><span class="welcome-text">Welcome to </span><span class="brand-name">Guru In .NET</span></div>
+                            <div><span class="brand-slogan">A developer's website to demonstrate key tricks of trade!</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-panel spacing-small jumbotron visible-sm visible-xs">
+                <div class="row">
+                    <div class="col-xs-12 links-panel-small">
+                        @Html.Partial("_demoButtonsSmall")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix" style="padding: 5px"></div>
+<div class="container">
+    <div class="panel-group" id="sneak-peak" role="tablist" aria-multiselectable="true" style="padding: 10px">
+        <div class="panel panel-success">
+            <div class="panel-heading panel-heading-bg" role="tab" id="asp-net-mvc-heading">
+                <h4 class="panel-title" role="button" data-toggle="collapse" data-parent="#sneak-peak" href="#asp-net-mvc" aria-expanded="true" aria-controls="asp-net-mvc">
+                    What is GuruIn.NET?
+                </h4>
+            </div>
+            <div id="asp-net-mvc" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="asp-net-mvc-heading">
+                <div class="panel-body text-justify">
+                    <p>
+                        GuruIn.NET is just an educational website which is being developed to learn &amp; gain expertise in .NET tools &amp; technologies, both server & client sides.
+                        I've implemented my own <strong>Blog</strong> (using Knockout JS & SQL mainly), <strong>GDrive</strong> to emulate Dropbox or Google Drive (using MVC, Ajax), <strong>Fiddle</strong> to emulate JS Fiddle (using Razor, Javascript) - just to get a feel, and learn.
+                        I've also implemented an <strong>eCommerce</strong> portal (using Angular JS) and provided a Dashboard as a CMS support.
+                    </p>
+                    <p class="hidden-xs">This webite itself uses HTML5, Bootstrap & Font Awesome (slightly tailored) amongst many other artifacts, which are all explained in Demos section. Have a look around and please feel free to leave your valuable <a href="/Home/Contact">feedback</a> if you wish to.</p>
+                    <p class="hidden-xs">This website also has a <a href="http://dev.guruin.net/" target="_blank">DEV version</a>&nbsp;<span class="glyphicon glyphicon-new-window"></span> which is typically a debug version. The source code of this website can be found @@ <a href="https://github.com/shree-venkat/guruin.net.git" target="_blank">https://github.com/shree-venkat/guruin.net.git</a>&nbsp;<span class="glyphicon glyphicon-new-window"></span>.</p>
+                    <p class="hidden-xs" style="font-size: 0.85em">
+                        * <b>Apologies</b> as the "content" of the website, like Demo pages or Blog posts, are still a TO-DO work for me.
+                        Also, Blog &amp; eCommerce pages <u>are taking a while to load</u> (being fixed) as the contents are loaded from the DB and the views are populated by Knockout &amp; Angular respectively.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading panel-heading-bg" role="tab" id="asp-net-webapi-heading">
+                <h4 class="panel-title collapsed" role="button" data-toggle="collapse" data-parent="#sneak-peak" href="#asp-net-webapi" aria-expanded="false" aria-controls="asp-net-webapi">
+                    Who Am I?
+                </h4>
+            </div>
+            <div id="asp-net-webapi" class="panel-collapse collapse" role="tabpanel" aria-labelledby="asp-net-webapi-heading">
+                <div class="panel-body text-justify">
+                    I am an IT contractor living in the UK with @(DateTime.Now.Year - 2004)+ years of extensive experience in multiple technical and business disciplines, with core expertise in C# .NET technology.
+                    <div style="padding: 10px 0"><a href="/Home/About" class="btn btn-custom-success">More About &nbsp; <i class="fa fa-hand-o-right fa-1_1x"></i></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading panel-heading-bg" role="tab" id="full-stack-heading">
+                <h4 class="panel-title collapsed" role="button" data-toggle="collapse" data-parent="#sneak-peak" href="#full-stack" aria-expanded="false" aria-controls="full-stack">
+                    Get In Touch!
+                </h4>
+            </div>
+            <div id="full-stack" class="panel-collapse collapse" role="tabpanel" aria-labelledby="full-stack-heading">
+                <div class="panel-body text-justify">
+                    If you wish to contact me, please feel free to get in touch using the contact form.
+                    <div style="padding: 10px 0"><a href="/Home/Contact" class="btn btn-custom-success">Contact &nbsp; <i class="fa fa-send-o fa-1_1x"></i></a></div>
+                    <p>Or just email me @@ <a href="mailto:Contact@GuruIn.NET">Contact@GuruIn.NET</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

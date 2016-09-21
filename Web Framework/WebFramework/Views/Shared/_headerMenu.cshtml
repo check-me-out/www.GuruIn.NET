@@ -1,0 +1,136 @@
+﻿<div>
+    <div class="navbar-header">
+        <div class="brand-container visible-xs">
+            <a class="navbar-brand brand-name brand-name-xs" href="@Url.Action("Index", "Home", new { area = "" })">
+                GuruIn.NET
+            </a>
+        </div>
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#header-menu-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+
+    <div>
+        <div id="header-menu-collapse" class="collapse navbar-collapse text-uppercase">
+            <ul id="menu" class="nav navbar-nav navbar-centre">
+                <li class="hidden-xs">
+                    <a class="brand-name brand-name-non-xs" href="@Url.Action("Index", "Home", new { area = "" })" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-home fa-1_2x"></i>
+                        <span class="hidden-sm">GuruIn.NET</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Demos")" role="button" aria-haspopup="true" aria-expanded="false">
+                        Demos
+                        <span class="arrow-down"></span>
+                    </a>
+                    <ul class="sub-menu-navbar dropdown-menu">
+                        <li><a href="/Demos#bootstrap" onclick="return LoadContent('#bootstrap');">Bootstrap</a></li>
+                        <li><a href="/Demos#angular" onclick="return LoadContent('#angular');">Angular JS</a></li>
+                        <li><a href="/Demos#knockout" onclick="return LoadContent('#knockout');">Knockout JS</a></li>
+                        <li><a href="/Demos#jasmin" onclick="return LoadContent('#jasmin');">QUnit / Jasmin</a></li>
+                        <li><a href="/Demos#type-js" onclick="return LoadContent('#type-js');">Type js</a></li>
+                        <li><a href="/Demos#sass-less" onclick="return LoadContent('#sass-less');">Sass / Scss</a></li>
+                        <li><a href="/Demos#react-js" onclick="return LoadContent('#react-js');">npm / bower</a></li>
+                        <li><a href="/Demos#html5" onclick="return LoadContent('#html5');">HTML 5</a></li>
+                        <li><a href="/Demos#font-awesome" onclick="return LoadContent('#font-awesome');">Font Awesome</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" role="button" aria-haspopup="true" aria-expanded="false" onclick="return false;">
+                        Highlights
+                        <span class="arrow-down"></span>
+                    </a>
+                    <ul class="sub-menu-navbar dropdown-menu">
+                        <li>
+                            <a href="@Url.Action("ComingUp", "Dashboard", new { area = "" })">
+                                Global Asax
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Error Handling
+                                <span class="arrow-right"></span>
+                            </a>
+                            <ul class="sub-menu-navbar dropdown-menu side-menu">
+                                <li>
+                                    <a href="#">
+                                        Server Side
+                                        <span class="arrow-right"></span>
+                                    </a>
+                                    <ul class="sub-menu-navbar dropdown-menu side-menu">
+                                        <li>
+                                            <a href="@Url.Action("Remove", "Dashboard", new { area = "" })">
+                                                On Exception
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Remove", "BadController", new { area = "" })">
+                                                Application Error
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/a/b/c/d/e/f/g">
+                                                Catch All
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/asljefhp">
+                                                Bad URL
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Client Side
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ComingUp", "Dashboard", new { area = "" })">
+                                Security
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    @Html.ActionLink("GDrive", "Index", "GDrive", new { area = "" }, null)
+                </li>
+                <li>
+                    @Html.ActionLink("Fiddle", "Index", "Fiddle", new { area = "" }, null)
+                </li>
+                <li>
+                    @Html.ActionLink("Blog", "AllPosts", "Home", new { area = "Blog" }, null)
+                </li>
+                <li>
+                    @Html.ActionLink("eCommerce", "Index", "Ecommerce", new { area = "" }, null)
+                </li>
+                <li>
+                    <a href="@Url.Action("List", "Dashboard", new { area = "" })">
+                        Dashboard
+                    </a>
+                </li>
+                <li style="display: none">
+                    <a href="/Home" role="button" aria-haspopup="true" aria-expanded="false" onclick="return false;">
+                        Myself
+                        <span class="arrow-down"></span>
+                    </a>
+                    <ul class="sub-menu-navbar dropdown-menu">
+                        <li>
+                            @Html.ActionLink("About", "About", "Home", new { area = "" }, null)
+                        </li>
+                        <li>
+                            @Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

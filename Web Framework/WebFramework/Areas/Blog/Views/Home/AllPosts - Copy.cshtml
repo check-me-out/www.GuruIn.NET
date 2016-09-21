@@ -1,0 +1,167 @@
+﻿@using WebFramework.Areas.Blog.ViewModels
+@model BlogViewModel
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_blogLayout.cshtml";
+}
+
+@section breadcrumbs {
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home", new { area = "" })"><i class="fa fa-home fa-1_3x"></i></a></li>
+        <li><a href="/Blog">All Posts</a></li>
+    </ol>
+}
+
+@section blogMenu {
+    @Html.Partial("_blogMenu", Model)
+}
+
+<h1 class="">
+    .NET Blogs
+    @if (Model.TotalCount > 0)
+    {
+        <span class="badge" style="margin-top: -40px; margin-left: -10px;">@Model.TotalCount</span>
+    }
+    <small class="text-capitalize hidden-xs hidden-sm">Learning intricacies</small>
+</h1>
+
+<div style="min-height: 600px;">
+    @if (Model.TotalCount == 0)
+    {
+        <span>There are no posts currently on the subject you are looking for.</span>
+    }
+
+    @for (var i = 0; i < Model.AllPosts.Count; ++i)
+    {
+        <div style="border-top: 1px dotted #777; padding: 20px 0">
+            <h4>
+                @if (!string.IsNullOrWhiteSpace(Model.SearchTerm))
+                {
+                    var title = BlogViewModel.ReplaceString(Model.AllPosts[i].Title, Model.SearchTerm, "<span class=\"highlight-search-term\">" + Model.SearchTerm + "</span>", StringComparison.CurrentCultureIgnoreCase);
+                    <span><a class="title" href="/Blog/Post/@Model.AllPosts[i].Id/@Model.AllPosts[i].UrlSlug?category=@Model.Category&tag=@Model.Tag&cur=@Model.CurrPage&searchTerm=@Model.SearchTerm">@MvcHtmlString.Create(title)</a></span>
+                }
+                else
+                {
+                    <span><a class="title" href="/Blog/Post/@Model.AllPosts[i].Id/@Model.AllPosts[i].UrlSlug?category=@Model.Category&tag=@Model.Tag&cur=@Model.CurrPage&searchTerm=@Model.SearchTerm">@Model.AllPosts[i].Title</a></span>
+                }
+            </h4>
+
+            <div class="visible-xs" style="margin: 10px 0">
+                <span>
+                    Category:
+                    @if (!string.IsNullOrWhiteSpace(Model.Category) && Model.AllPosts[i].Category.Name.Equals(Model.Category, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        <a class="category selected-category" href="/Blog/AllPosts?tag=@Model.Tag">@Model.AllPosts[i].Category.Name</a>
+                    }
+                    else
+                    {
+                        <a class="category" href="/Blog/AllPosts/@Model.AllPosts[i].Category.UrlSlug?category=@Model.AllPosts[i].Category.Name&tag=@Model.Tag">@Model.AllPosts[i].Category.Name</a>
+                    }
+                </span>
+
+                <span style="float: left">
+                    Posted: @Model.AllPosts[i].PostedOn.ToString("ddd, MMM dd, yyyy")
+                </span>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="hidden-xs" style="margin: 10px 0">
+                <span>
+                    Category:
+                    @if (!string.IsNullOrWhiteSpace(Model.Category) && Model.AllPosts[i].Category.Name.Equals(Model.Category, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        <a class="category selected-category" href="/Blog/AllPosts?tag=@Model.Tag">@Model.AllPosts[i].Category.Name</a>
+                    }
+                    else
+                    {
+                        <a class="category" href="/Blog/AllPosts/@Model.AllPosts[i].Category.UrlSlug?category=@Model.AllPosts[i].Category.Name&tag=@Model.Tag">@Model.AllPosts[i].Category.Name</a>
+                    }
+                </span>
+
+                <span style="float: right">
+                    Posted: @Model.AllPosts[i].PostedOn.ToString("dddd, MMMM dd, yyyy")
+                </span>
+                @if (Model.AllPosts[i].ModifiedOn != null)
+                {
+                    <span style="font-size: 0.8em;float: right">(Modified: @Model.AllPosts[i].ModifiedOn.Value.ToString("dddd, MMMM dd, yyyy"))</span>
+                }
+            </div>
+
+            <div class="hidden-xs">
+                <div style="text-align: justify">
+                    @if (!string.IsNullOrWhiteSpace(Model.SearchTerm))
+                    {
+                        var shortDescription = BlogViewModel.ReplaceString(Model.AllPosts[i].ShortDescription, Model.SearchTerm, "<span class=\"highlight-search-term\">" + Model.SearchTerm + "</span>", StringComparison.CurrentCultureIgnoreCase);
+                        <span>@MvcHtmlString.Create(shortDescription) &nbsp; <a href="/Blog/Post/@Model.AllPosts[i].Id/@Model.AllPosts[i].UrlSlug?category=@Model.Category&tag=@Model.Tag&cur=@Model.CurrPage&searchTerm=@Model.SearchTerm">Read more</a></span>
+                    }
+                    else
+                    {
+                        <span>@Model.AllPosts[i].ShortDescription &nbsp; <a href="/Blog/Post/@Model.AllPosts[i].Id/@Model.AllPosts[i].UrlSlug?category=@Model.Category&tag=@Model.Tag&cur=@Model.CurrPage&searchTerm=@Model.SearchTerm">Read more</a></span>
+                    }
+                </div>
+            </div>
+            <div class="visible-xs">
+                <div style="text-align: justify">
+                    @if (!string.IsNullOrWhiteSpace(Model.SearchTerm))
+                    {
+                        var shortDescription = BlogViewModel.ReplaceString(Model.AllPosts[i].ShortDescription, Model.SearchTerm, "<span class=\"highlight-search-term\">" + Model.SearchTerm + "</span>", StringComparison.CurrentCultureIgnoreCase);
+                        <span>@MvcHtmlString.Create(shortDescription.Substring(0, 150)) &nbsp; <a href="/Blog/Post/@Model.AllPosts[i].Id/@Model.AllPosts[i].UrlSlug?category=@Model.Category&tag=@Model.Tag&cur=@Model.CurrPage&searchTerm=@Model.SearchTerm">more</a></span>
+                    }
+                    else
+                    {
+                        <span>@Model.AllPosts[i].ShortDescription.Substring(0, 150) &nbsp; <a href="/Blog/Post/@Model.AllPosts[i].Id/@Model.AllPosts[i].UrlSlug?category=@Model.Category&tag=@Model.Tag&cur=@Model.CurrPage&searchTerm=@Model.SearchTerm">more</a></span>
+                    }
+                </div>
+            </div>
+
+            @if (Model.AllPosts[i].Tags != null && Model.AllPosts[i].Tags.Count > 0)
+            {
+                <div style="padding-top: 15px">
+                    Tags:
+                    @for (int j = 0; j < Model.AllPosts[i].Tags.Count; j++)
+                    {
+                        var tags = Model.AllPosts[i].Tags.OrderBy(o => o.Name).ToList();
+                        if (!string.IsNullOrWhiteSpace(Model.Tag) && tags[j].Name.Equals(Model.Tag, StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            <span><a class="tag-link selected" href="/Blog/AllPosts?category=@Model.Category">@tags[j].Name</a></span>
+                        }
+                        else
+                        {
+                            <span><a class="tag-link" href="/Blog/AllPosts/@tags[j].UrlSlug?category=@Model.Category&tag=@tags[j].Name">@tags[j].Name</a></span>
+                        }
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<div style="display: block; text-align: center">
+    @if (Model.PrevPage != null)
+    {
+        <a href="/Blog/AllPosts/slug=@Model.UrlSlug?category=@Model.Category&tag=@Model.Tag&cur=@Model.PrevPage&searchTerm=@Model.SearchTerm"
+           class="btn btn-black btn-md" style="float: left">
+            <i class="fa fa-chevron-circle-left"></i>&nbsp; Older
+        </a>
+    }
+
+    @if (Model != null && Model.AllPosts != null && Model.AllPosts.Count > 5)
+    {
+        <a href="#top" class="btn btn-black btn-md">
+            <i class="fa fa-chevron-circle-up fa-1_5x"></i>
+        </a>
+    }
+
+    @if (Model.NextPage != null)
+    {
+        <a href="/Blog/AllPosts/slug=@Model.UrlSlug?category=@Model.Category&tag=@Model.Tag&cur=@Model.NextPage&searchTerm=@Model.SearchTerm"
+           class="btn btn-black btn-md" style="float: right">
+            Newer &nbsp;<i class="fa fa-chevron-circle-right"></i>
+        </a>
+    }
+</div>
+
+<script type="text/javascript">
+    var allPostsMvcViewModel = { AllPostsApiEndpoint: "@Model.AllPostsApiEndpoint" };
+</script>

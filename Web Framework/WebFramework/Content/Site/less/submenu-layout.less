@@ -1,0 +1,66 @@
+﻿@import "../../Bootstrap/less/variables.less";
+@import "theme.less";
+
+@import "common.less";
+
+main {
+    margin-top: 73px !important;
+}
+
+#sidebar-items {
+    background-color: @submenu-bg;
+
+    height: 2000px;
+}
+
+#main-content {
+    min-height: @content-min-height-sm * 1.5;
+
+    @media screen  and (min-width: @screen-sm-min) {// and (orientation: landscape) {
+        min-height: @content-min-height-lg * 1.5;
+    }
+
+    box-shadow: 10px 0 10px -10px inset;
+}
+
+.submenu li:first-child,
+.submenu li:last-child {
+    border-radius: 0;
+}
+
+.submenu-highlight {
+    background-color: @submenu-highlight-bg !important;
+    color: @submenu-highlight-color !important;
+    border-bottom-color: @submenu-highlight-border !important;
+    box-shadow: 3px 0 3px rgba(0, 0, 0, 0.5);
+
+    & > a {
+        background-color: @submenu-highlight-bg !important;
+        color: @submenu-highlight-color !important;
+    }
+}
+
+.submenu {
+    li {
+        background-color: @submenu-bg;
+        border: 0;
+        margin-bottom: 0;
+        border-bottom: @submenu-border-size solid @submenu-border;
+        cursor: pointer;
+
+        a {
+            color: @submenu-color;
+            background-color: @submenu-bg;
+            text-decoration: none;
+        }
+
+        &:hover,
+        &:focus {
+            .submenu-highlight;
+        }
+    }
+}
+
+.badge {
+    background-color: @submenu-highlight-border;
+}

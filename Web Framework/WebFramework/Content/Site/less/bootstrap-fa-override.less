@@ -1,0 +1,240 @@
+﻿@import "../../Bootstrap/less/variables.less";
+@import "theme.less";
+
+
+.modal-header {
+    background-color: @btn-custom-success-bg;
+    border-color: @btn-custom-success-border;
+    border-top-left-radius: @border-radius-large;
+    border-top-right-radius: @border-radius-large;
+
+    button {
+        opacity: 1;
+    }
+
+    .modal-title {
+        color: @btn-custom-success-color;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    i {
+        color: @btn-custom-success-color;
+        opacity: 1;
+    }
+}
+
+.modal-footer {
+    text-align: center !important;
+}
+
+.navbar-brand {
+    padding: @navbar-padding-vertical (@navbar-padding-horizontal - 1) !important;
+}
+
+.panel {
+    margin-bottom: @panel-margin-bottom !important;
+}
+
+.badge {
+    background-color: @badge-bg !important;
+    text-align: right !important;
+}
+
+.breadcrumb {
+    background-color: @breadcrumb-bg !important;
+    padding: @breadcrumb-padding-vertical @breadcrumb-padding-horizontal !important;
+    margin-bottom: 0 !important;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    legend {
+        width: auto;
+        margin-bottom: 0;
+        border-bottom: 0;
+        padding: 10px;
+    }
+}
+
+.fa-star, .fa-star-half-full {
+    color: @brand-warning;
+}
+.fa-0_5x { font-size: 0.5em; }
+.fa-0_6x { font-size: 0.6em; }
+.fa-0_7x { font-size: 0.7em; }
+.fa-0_8x { font-size: 0.8em; }
+.fa-0_9x { font-size: 0.9em; }
+.fa-1_1x { font-size: 1.1em; }
+.fa-1_2x { font-size: 1.2em; }
+.fa-1_3x { font-size: 1.3em; }
+.fa-1_4x { font-size: 1.4em; }
+.fa-1_5x { font-size: 1.5em; }
+.fa-2_5x { font-size: 2.5em; }
+.fa-3_5x { font-size: 3.5em; }
+.fa-4_5x { font-size: 4.5em; }
+.fa-5_5x { font-size: 5.5em; }
+
+
+.btn-custom-success, .btn-custom-default, .btn-custom-failure, .btn-custom-metallic, .btn-custom-black {
+  //text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+  .box-shadow(@shadow);
+
+  // Reset the shadow
+  &:active,
+  &.active {
+    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    .box-shadow(none);
+  }
+
+  .badge {
+    text-shadow: none;
+  }
+}
+
+
+.btn-custom-success {
+    .button-variant(@btn-custom-success-color; @btn-custom-success-bg; @btn-custom-success-border);
+    //background-image: linear-gradient(to bottom, @btn-custom-success-bg, @btn-custom-success-shade-bg 49.99%, @btn-custom-success-bg 50%, @btn-custom-success-shade-bg) !important;
+    background-image: linear-gradient(to bottom, lighten(@btn-custom-success-shade-bg, 10%), @btn-custom-success-bg 50%, lighten(@btn-custom-success-shade-bg, 10%)) !important;
+    .btn-shade(@btn-custom-success-bg);
+
+    &:hover, &:focus, &:active {
+        color: @btn-custom-success-color !important;
+        //background-image: linear-gradient(to bottom, darken(@btn-custom-success-bg, 5%), darken(@btn-custom-success-shade-bg, 5%) 49.99%, darken(@btn-custom-success-bg, 5%) 50%, darken(@btn-custom-success-shade-bg, 5%)) !important;
+        background-image: linear-gradient(to bottom, @btn-custom-success-shade-bg, darken(@btn-custom-success-bg, 10%) 50%, @btn-custom-success-shade-bg) !important;
+        border-color: darken(@btn-custom-success-border, 15%) !important;
+    }
+}
+
+.btn-custom-default {
+    .button-variant(@btn-custom-default-color; @btn-custom-default-bg; @btn-custom-default-border);
+    //background-image: linear-gradient(to bottom, darken(@btn-custom-default-bg, 10%), @btn-custom-default-bg 49.9%, darken(@btn-custom-default-bg, 10%) 50%, @btn-custom-default-bg) !important;
+    background-image: linear-gradient(to bottom, @btn-custom-default-bg, darken(@btn-custom-default-bg, 15%) 50%, @btn-custom-default-bg) !important;
+    .btn-shade(darken(@btn-custom-default-bg, 10%));
+
+    &:hover, &:focus, &:active {
+        color: @btn-custom-default-color !important;
+        //background-image: linear-gradient(to bottom, darken(@btn-custom-default-bg, 15%), darken(@btn-custom-default-bg, 5%) 49.99%, darken(@btn-custom-default-bg, 15%) 50%, darken(@btn-custom-default-bg, 5%)) !important;
+        background-image: linear-gradient(to bottom, darken(@btn-custom-default-bg, 5%), darken(@btn-custom-default-bg, 20%) 50%, darken(@btn-custom-default-bg, 5%)) !important;
+        border-color: darken(@btn-custom-default-border, 10%) !important;
+    }
+}
+
+.btn-custom-failure {
+    .button-variant(@btn-custom-failure-color; @btn-custom-failure-bg; @btn-custom-failure-border);
+    //background-image: linear-gradient(to bottom, @btn-custom-failure-bg, lighten(@btn-custom-failure-bg, 10%) 49.9%, @btn-custom-failure-bg 50%, lighten(@btn-custom-failure-bg, 10%)) !important;
+    background-image: linear-gradient(to bottom, lighten(@btn-custom-failure-bg, 10%), @btn-custom-failure-bg 50%, lighten(@btn-custom-failure-bg, 10%)) !important;
+    .btn-shade(@btn-custom-failure-bg);
+
+    &:hover, &:focus, &:active {
+        color: @btn-custom-failure-color !important;
+        //background-image: linear-gradient(to bottom, darken(@btn-custom-failure-bg, 5%), lighten(@btn-custom-failure-bg, 5%) 49.9%, darken(@btn-custom-failure-bg, 5%) 50%, lighten(@btn-custom-failure-bg, 5%)) !important;
+        background-image: linear-gradient(to bottom, lighten(@btn-custom-failure-bg, 5%), darken(@btn-custom-failure-bg, 5%) 50%, lighten(@btn-custom-failure-bg, 5%)) !important;
+        border-color: darken(@btn-custom-failure-border, 10%) !important;
+    }
+}
+
+.btn-custom-metallic {
+    .button-variant(@btn-custom-metallic-color; @btn-custom-metallic-bg; @btn-custom-metallic-border);
+    //background-image: linear-gradient(to bottom, @btn-custom-metallic-bg, lighten(@btn-custom-metallic-bg, 10%) 49.9%, @btn-custom-metallic-bg 50%, lighten(@btn-custom-metallic-bg, 10%)) !important;
+    background-image: linear-gradient(to bottom, lighten(@btn-custom-metallic-bg, 10%), @btn-custom-metallic-bg 50%, lighten(@btn-custom-metallic-bg, 10%)) !important;
+    .btn-shade(@btn-custom-metallic-bg);
+
+    &:hover, &:focus, &:active {
+        color: @btn-custom-metallic-color !important;
+        //background-image: linear-gradient(to bottom, darken(@btn-custom-metallic-bg, 5%), lighten(@btn-custom-metallic-bg, 5%) 49.9%, darken(@btn-custom-metallic-bg, 5%) 50%, lighten(@btn-custom-metallic-bg, 5%)) !important;
+        background-image: linear-gradient(to bottom, lighten(@btn-custom-metallic-bg, 5%), darken(@btn-custom-metallic-bg, 5%) 50%, lighten(@btn-custom-metallic-bg, 5%)) !important;
+        border-color: darken(@btn-custom-metallic-border, 5%) !important;
+    }
+}
+
+.btn-custom-black {
+    .button-variant(@btn-custom-black-color; @btn-custom-black-bg; @btn-custom-black-border);
+    //background-image: linear-gradient(to bottom, @btn-custom-black-bg, lighten(@btn-custom-black-bg, 15%) 49.9%, @btn-custom-black-bg 50%, lighten(@btn-custom-black-bg, 15%)) !important;
+    background-image: linear-gradient(to bottom, lighten(@btn-custom-black-bg, 15%), @btn-custom-black-bg 50%, lighten(@btn-custom-black-bg, 15%)) !important;
+    .btn-shade(@btn-custom-black-bg);
+
+    &:hover, &:focus, &:active {
+        color: @btn-custom-black-color !important;
+        //background-image: linear-gradient(to bottom, darken(@btn-custom-black-bg, 5%), lighten(@btn-custom-black-bg, 10%) 49.9%, darken(@btn-custom-black-bg, 5%) 50%, lighten(@btn-custom-black-bg, 10%)) !important;
+        background-image: linear-gradient(to bottom, lighten(@btn-custom-black-bg, 10%), darken(@btn-custom-black-bg, 5%) 50%, lighten(@btn-custom-black-bg, 10%)) !important;
+        border-color: darken(@btn-custom-black-border, 15%) !important;
+    }
+}
+
+
+.btn-shade(@bg-color) {
+    border-left: 1px solid darken(@bg-color, 5%) !important;
+    border-top: 1px solid darken(@bg-color, 5%) !important;
+    border-right: 2px solid darken(@bg-color, 5%) !important;
+    border-bottom: 3px solid darken(@bg-color, 5%) !important;
+}
+
+//../../Bootstrap/less/misins/vendor-prefixes.less
+.box-shadow(@shadow) {
+  -webkit-box-shadow: @shadow; // iOS <4.3 & Android <4.1
+          box-shadow: @shadow;
+}
+
+//../../Bootstrap/less/buttons.less
+.button-variant(@color; @background; @border) {
+  color: @color;
+  background-color: @background;
+  border-color: @border;
+
+  &:focus,
+  &.focus {
+    color: @color;
+    background-color: darken(@background, 10%);
+        border-color: darken(@border, 25%);
+  }
+  &:hover {
+    color: @color;
+    background-color: darken(@background, 10%);
+        border-color: darken(@border, 12%);
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @color;
+    background-color: darken(@background, 10%);
+        border-color: darken(@border, 12%);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: @color;
+      background-color: darken(@background, 17%);
+          border-color: darken(@border, 25%);
+    }
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: @background;
+          border-color: @border;
+    }
+  }
+
+  .badge {
+    color: @background;
+    background-color: @color;
+  }
+}

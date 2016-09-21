@@ -1,0 +1,15 @@
+﻿@model string
+
+<section class="virtual-keypad">
+    <h3>Enter Security Code</h3>
+
+    <div style="padding: 10px 0">
+        <div><span>A</span><span>B</span><span>1</span><span>2</span><span>3</span></div>
+        <div><span>C</span><span>D</span><span>4</span><span>5</span><span>6</span></div>
+        <div><span>E</span><span>F</span><span>7</span><span>8</span><span>9</span></div>
+        <div><span>G</span><span>H</span><span>*</span><span>0</span><span>#</span></div>
+    </div>
+
+    <input id="returnUrl" name="returnUrl" type="hidden" value="@Model" /><br />
+    <input id="code" name="code" type="password" class="form-control" style="width: 240px" /><br />
+</section>

@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "Fiddle";
+}
+
+@section breadcrumbs {
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-1_3x"></i></a></li>
+        <li><a href="@Url.Action("Index", "Fiddle")">My Fiddle</a></li>
+    </ol>
+}
+
+<div class="row" style="padding: 20px 15px">
+    <div>
+        <div style="float: left">
+            <button class="btn btn-custom-success btn-md" data-toggle="modal" data-target="#js-console-modal">
+                JS Console &nbsp; <i class="fa fa-expand fa-1_1x"></i>
+            </button>
+        </div>
+        <div class="visible-xs clearfix" style="padding: 5px"></div>
+        <div style="float: right">
+            <button id="btn-clear" class="btn btn-custom-default btn-md">
+                Clear &nbsp; <i class="fa fa-times fa-1_1x"></i>
+            </button>
+            <button id="btn-run" class="btn btn-custom-success btn-md">
+                Run &nbsp; <i class="fa fa-play fa-1_1x"></i>
+            </button>
+        </div>
+        <div class="clearfix"></div>
+        <div class="fiddle-layout">
+            <div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 code-input">
+                    <textarea id="html-code" placeholder="HTML" class="form-control"></textarea>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 code-input">
+                    <textarea id="css-code" placeholder="CSS" class="form-control"></textarea>
+                </div>
+            </div>
+            <div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 code-input">
+                    <textarea id="js-code" placeholder="JS" class="form-control"></textarea>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 code-output">
+                    <div id="output">
+                        <!DOCTYPE HTML>
+                        <html>
+                        <head>
+                        </head>
+                        <body style="display: block; width: 100%; height: 100%">
+                            <div id="output-css"></div>
+                            <div id="output-html">
+                            </div>
+                            <div id="output-js"></div>
+                        </body>
+                    </html>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="js-console-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times-circle"></i></button>
+                <h4 class="modal-title" id="myModalLabel">Javascript Console</h4>
+            </div>
+
+            <div class="modal-body" style="padding-right: 0">
+                <!DOCTYPE HTML>
+                <html>
+                <head>
+                    @*@Styles.Render("~/bundles/centered-layout-css")
+                    @Scripts.Render("~/bundles/modernizr")
+                    @Styles.Render("~/bundles/form-data-styles")
+
+                    @Scripts.Render("~/bundles/centered-layout-js")
+                    @Scripts.Render("~/bundles/form-data-validation")*@
+                </head>
+                <body>
+                    <div id="js-console-output-parent" style="max-height: 240px; min-height: 240px; overflow-y: auto">
+                        <div id="js-console-output" style="height: 100%"></div>
+                    </div>
+                    <div id="js-console-clear" onclick="$('#js-console-output').html(''); $('#jsCode').val(''); $('#clearCode').hide();" style="cursor: pointer; text-align: right; padding-right: 20px;">
+                        <span class="btn btn-custom-default btn-sm" style="padding: 5px 12px; border-radius: 20px;"> Clear </span>
+                    </div>
+                </body>
+            </html>
+        </div>
+
+        <div class="modal-footer">
+            <div id="js-console-code">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-code"></i></div>
+                    <input id="jsCode" type="text" class="form-control" placeholder="&laquo; Enter Javascript code here..." value="'test'.replace('s', 'x'); //Click play..." style="background-color: #f7f7f7">
+                    <div id="clearCode" class="clear-button input-group-addon" onclick="$('#jsCode').val(''); $('#clearCode').hide();" style="cursor: pointer">
+                        <i class="fa fa-times"></i>
+                    </div>
+                    <div class="run-button input-group-addon" onclick="RunJsCode();">
+                        <i class="fa fa-play fa-1_1x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+@section pageStyle {
+    @Styles.Render("~/bundles/fiddle-styles")
+    @Styles.Render("~/bundles/form-data-styles")
+}
+
+@section pageScript {
+    @Scripts.Render("~/bundles/fiddle-scripts")
+    @Scripts.Render("~/bundles/form-data-validation")
+}

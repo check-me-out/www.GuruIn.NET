@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewBag.Title = "Drive";
+}
+
+@section breadcrumbs {
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-1_3x"></i></a></li>
+        <li class="active">
+            <a href="@Url.Action("Index", "GDrive")">GDrive</a>
+            &nbsp;<span style="font-size: 0.8em">(<a href="@Url.Action("Logout", "Security", new { returnUrl = "/GDrive" })">Logout</a>)</span>
+        </li>
+    </ol>
+}
+
+<div style="padding-right: 35px">
+    <fieldset class="col-lg-5 col-md-6 col-sm-12 col-xs-12" style="margin: 25px 0">
+        <legend>Add Files To Drive</legend>
+        @using (Html.BeginForm("Index", "GDrive", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken();
+            <input type="file" name="file" id="file" style="display: inline" />
+            <button class="btn btn-custom-success btn-sm" type="submit">Upload File</button>
+            <br /><br />
+            <div>Limitations: @ViewBag.MaxNoOfFiles file(s); @ViewBag.MaxFileSize MB each; @ViewBag.DriveFileFormats formats;</div>
+        }
+
+    </fieldset>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="list-group col-lg-5 col-md-6 col-sm-12 col-xs-12">
+
+    <div class="list-group-item" style="background-color: #eee;">
+        Uploaded Files &nbsp; <a href="#" onclick="LoadFiles(''); return false;"><i class="fa fa-home fa-0_7x"></i></a>
+        <span id="navigation"></span>
+    </div>
+
+    <div id="list-of-files"></div>
+</div>
+
+@section pageStyle {
+    @Styles.Render("~/bundles/form-data-styles")
+}
+
+@section pageScript {
+    @Scripts.Render("~/bundles/form-data-validation")
+
+    <script type="text/javascript">
+        $(function () {
+            LoadFiles('');
+        });
+
+        function LoadFiles(folder) {
+            Invoke('/GDrive/GetFiles?folder=' + folder, '', 'GET', true, OnGetFiles);
+        }
+
+        function OnGetFiles(data) {
+            var html = '';
+            for (var i = 0; i < data.length; i++)
+            {
+                var location = data[i];//.substring(data[i].indexOf("DriveContents") + 14).replace(/\\/g, "/");
+
+                var file = data[i].substring(data[i].lastIndexOf('\\') + 1);
+                var isDir = true;
+                var displayContents = '';
+                var actionContents = '';
+                if (file.toLowerCase().endsWith('.zip') || file.toLowerCase().endsWith('.jpg') || file.toLowerCase().endsWith('.jpeg') || file.toLowerCase().endsWith('.png')) {
+                    isDir = false;
+                    displayContents = file;
+                    actionContents += '<div style="width: 25%; display: inline-block; text-align: right">';
+                    actionContents += '<a href="/GDrive/Download?file=' + location + '" target="_blank"><i class="fa fa-download fa-1_3x"></i></a>';
+                    actionContents += '&nbsp; &nbsp;<a href="/GDrive/Delete?file=' + location + '" onclick="return confirm(\'Are you sure you want to delete this file?\');"><i class="fa fa-remove fa-1_3x"></i></a></div>';
+                }
+                else {
+                    var link = '';
+                    var folders = location.split('/');
+                    for (var j = 0; j < folders.length; j++) {
+                        link = folders[0];
+                        for (var k = 1; k <= j; k++) {
+                            link += '\\\\' + folders[k];
+                        }
+                    }
+                    displayContents = '<a href="' + link.replace(/\\\\/g, "/") + '" onclick="LoadFiles(\'' + link + '\'); return false;">' + file + '</a>';
+                }
+
+                html += '<div class="list-group-item"><div style="width: 72%; display: inline-block">';
+                html += (i + 1) + '.&nbsp; ' + displayContents + '&nbsp;</div>';
+                html += actionContents + '</div>';
+            }
+
+            $("#list-of-files").html(html);
+
+            if (data.length > 0) {
+                var navigationLinks = '';
+                var location = data[0].substring(data[0].indexOf("DriveContents") + 14).replace(/\\/g, "/");
+                var folders = location.split('/');
+                for (var j = 0; j < folders.length - 1; j++) {
+                    var link = folders[0];
+                    for (var k = 1; k <= j; k++) {
+                        link += '\\\\' + folders[k];
+                    }
+                    navigationLinks += '&nbsp;/&nbsp;<a href="' + link.replace(/\\\\/g, "/") + '" onclick="LoadFiles(\'' + link + '\'); return false;">' + folders[j] + '</a>';
+                }
+                $("#navigation").html(navigationLinks);
+            }
+        }
+    </script>
+}

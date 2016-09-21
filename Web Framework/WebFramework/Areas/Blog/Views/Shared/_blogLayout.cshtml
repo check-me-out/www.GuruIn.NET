@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title Blog - GuruIn.NET</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <meta name="description" content="Guru In .NET or .NET guru is a website developed to highlight some key aspects of web development using .NET framework." />
+    <meta name="keywords" content=".NET, guru, guru in .NET, @ViewBag.Keywords" />
+    <meta name="robots" content="noindex, follow" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+    @Styles.Render("~/bundles/blog-layout-css")
+    @RenderSection("pageStyle", required: false)
+    <!--[if lt IE 9]>
+      <script src="/Content/jQuery/html5shiv.min.js"></script>
+      <script src="/Content/jQuery/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="container-fluid" style="font-family: Verdana, Arial, sans-serif">
+    @{
+        var isDebugMode = "False";
+        if (TempData.Keys.Contains("IsDebugMode") && TempData["IsDebugMode"] != null)
+        {
+            isDebugMode = TempData["IsDebugMode"].ToString();
+        }
+    }
+    <input id="is-debug-mode" type="hidden" value="@isDebugMode" />
+
+    @{
+        var msg = "";
+        var severity = "Info";
+        var title = "";
+        if (TempData.Keys.Contains("UserMessage") && TempData["UserMessage"] != null)
+        {
+            msg = TempData["UserMessage"].ToString();
+            if (TempData.Keys.Contains("UserMessageSeverity") && TempData["UserMessageSeverity"] != null)
+            {
+                severity = TempData["UserMessageSeverity"].ToString();
+            }
+
+            if (TempData.Keys.Contains("UserMessageTitle") && TempData["UserMessageTitle"] != null)
+            {
+                title = TempData["UserMessageTitle"].ToString();
+            }
+        }
+    }
+    <input id="user-message" type="hidden" value="@msg" />
+    <input id="user-message-severity" type="hidden" value="@severity" />
+    <input id="user-message-title" type="hidden" value="@title" />
+
+    <div id="bootstrap-cdn-down" class="hidden"></div>
+    <noscript>Please enable Javascript (<a href="http://enable-javascript.com/" title="Instructions to enable Javascript" target="_blank">help</a>).</noscript>
+    @Html.Partial("_jsErrorAlert")
+    @Html.Partial("_workInProgress")
+    @Html.Partial("_alertMessage")
+
+
+    <div class="row no-spacing">
+        <header class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                @Html.Partial("_headerMenu")
+            </nav>
+            <section class="breadcrumbs-container">
+                <div class="container">
+                    @RenderSection("breadcrumbs", required: true)
+                </div>
+            </section>
+        </header>
+
+        <main class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <section class="container border-shadow">
+                <div class="row">
+                    <section id="main-content" class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                        <div style="margin-bottom: 50px">
+                            @RenderBody()
+                        </div>
+                    </section>
+                    <section>
+                        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            @RenderSection("blogMenu", required: true)
+                        </div>
+                    </section>
+                </div>
+            </section>
+            <div class="clearfix"></div>
+        </main>
+
+        <footer class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="footer text-center">
+                @Html.Partial("_copyrightAndVersion")
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js" integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
+    <script>(window.jQuery || document.write('<script src="/Content/jQuery/jquery-2.2.1.min.js"><\/script>'));</script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script>($.fn.modal || document.write('<script src="/Content/Bootstrap/js/bootstrap.min.js"><\/script>'));</script>
+    @Scripts.Render("~/bundles/blog-layout-js")
+    @RenderSection("pageScript", required: false)
+
+</body>
+</html>

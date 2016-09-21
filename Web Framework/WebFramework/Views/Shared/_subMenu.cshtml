@@ -1,0 +1,44 @@
+﻿@model string
+
+<div class="visible-sm visible-xs">
+    <div style="display: table; margin: 0 auto">
+        <button type="button" class="" data-toggle="collapse" data-target="#sub-menu-collapse" aria-expanded="false" aria-controls="sub-menu-collapse" style="padding: 0; margin: 0; border: 0">
+            <span class="btn" style="color: #ddd; background-color: #333">
+                <i class="fa fa-chevron-circle-down fa-1_1x"></i>
+            </span>
+        </button>
+    </div>
+    <div class="collapse" id="sub-menu-collapse" style="padding: 0">
+        <!-- JS copies the sub menu contents (<ul>) from the below "sub-menu-items" -->
+    </div>
+</div>
+
+<div class="visible-lg visible-md">
+    <div id="sidebar-items">
+        <ul class="list-group submenu">
+            <li class="list-group-item">
+                <a href="@Url.Action("Index", "Ecommerce")">
+                    Collections
+                </a>
+                @if (!string.IsNullOrWhiteSpace(Model))
+                {
+                    <span class="badge">@Model</span>
+                }
+            </li>
+            <li class="list-group-item">
+                <a href="@Url.Action("List", "Dashboard")">
+                    List Of Products
+                </a>
+                @if (!string.IsNullOrWhiteSpace(Model))
+                {
+                    <span class="badge">@Model</span>
+                }
+            </li>
+            <li class="list-group-item">
+                <a href="@Url.Action("Create", "Dashboard")">
+                    Create New Product
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+﻿@model WebFramework.Models.Products.Item
+
+@{
+    Layout = "~/Views/Shared/_subMenuLayout.cshtml";
+    ViewBag.Title = "Details";
+}
+
+@section breadcrumbs {
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-1_3x"></i></a></li>
+        <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+        <li class="active"><a href="@Url.Action("Details", new { id = Model.Id })">Details</a></li>
+    </ol>
+}
+
+@section subMenu {
+    @{
+        var count = string.Empty;
+        if (ViewBag.ListCount != null)
+        {
+            count = ((int)ViewBag.ListCount).ToString();
+        }
+    }
+    @Html.Partial("_subMenu", count)
+}
+
+<h1 class="text-uppercase">Details</h1>
+
+<fieldset class="form-horizontal col-lg-7 col-md-7 col-sm-12 col-xs-12">
+    <legend>Tabular Model</legend>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.Name</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.Description</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CurrentPrice, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">£@Model.CurrentPrice</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.NewPrice, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">£@Model.NewPrice</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CreatedBy, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.CreatedBy</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CreatedOn, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.CreatedOn</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UpdatedBy, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.UpdatedBy</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UpdatedOn, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.UpdatedOn</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BuyUrl, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.BuyUrl</p>
+        </div>
+    </div>
+    <p style="padding-top: 20px; float: right">
+        <a href="@Url.Action("List", "Dashboard")" class="btn btn-custom-default">
+            Back &nbsp; <i class="fa fa-arrow-left fa-1_1x"></i>
+        </a>&nbsp;
+        <a href="@Url.Action("Edit", "Dashboard", new { id = Model.Id })" class="btn btn-custom-success">
+            Edit &nbsp; <i class="fa fa-pencil fa-1_1x"></i>
+        </a>
+    </p>
+</fieldset>
+

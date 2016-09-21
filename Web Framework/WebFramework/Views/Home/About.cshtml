@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Coming up";
+}
+
+@section breadcrumbs {
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-1_3x"></i></a></li>
+        <li><a href="#">About</a></li>
+    </ol>
+}
+
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Watch this space...</p>

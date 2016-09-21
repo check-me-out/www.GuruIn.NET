@@ -1,0 +1,80 @@
+﻿@using WebFramework.Areas.Blog.ViewModels
+@model BlogViewModel
+
+<div style="display: none">
+    <div style="display: table; margin: 0 auto">
+        <button type="button" class="" data-toggle="collapse" data-target="#blog-menu-collapse" aria-expanded="false" aria-controls="blog-menu-collapse" style="padding: 0; margin: 0; border: 0">
+            <span class="btn" style="color: #fff; background-color: #222">
+                <i class="fa fa-chevron-circle-down fa-1_1x"></i>
+            </span>
+        </button>
+    </div>
+    <div class="collapse" id="blog-menu-collapse" style="padding: 0">
+        <!-- JS copies the blog menu contents (<ul>) from the below "blog-menu-items" -->
+    </div>
+</div>
+
+<div class="visible-lg visible-md blog-menu">
+    <form action="@Url.Action("AllPosts")" method="get" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control" name="searchTerm" placeholder="Search the blog..." value="@Model.SearchTerm">
+            @if (!string.IsNullOrEmpty(Model.SearchTerm))
+            {
+                <div class="search-button input-group-addon" onclick="$('input[name=\'searchTerm\']').val(''); $('form').submit();">
+                    <i class="fa fa-times"></i>
+                </div>
+            }
+            <div class="search-button input-group-addon" onclick="$('form').submit();">
+                <i class="fa fa-search"></i>
+            </div>
+        </div>
+        <input type="hidden" name="slug" value="@Model.UrlSlug">
+        <input type="hidden" name="category" value="@Model.Category">
+        <input type="hidden" name="tag" value="@Model.Tag">
+        <input type="hidden" name="archive" value="@Model.Archive">
+        <input type="hidden" name="cur" value="">
+    </form>
+
+    <div id="blog-menu-archives">
+        <div class="btn-group" style="width: 100%">
+            <button type="button" class="btn btn-custom-default btn-md btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: 1px solid #f5f5f5; border-radius: 4px;">
+                <span class="button-text"></span>
+                <span class="caret-holder">
+                    <span class="caret"></span>
+                </span>
+            </button>
+            <ul class="dropdown-menu" style="width: 100%">
+                <li>
+                    <a href="@Url.Action("Index", "AllPosts", new { id = "" })">All Posts</a>
+                </li>
+                <!-- JS populates the archives -->
+            </ul>
+        </div>
+    </div>
+
+    <div id="blog-menu-categories">
+        <div class="btn-group" style="width: 100%">
+            <button type="button" class="btn btn-custom-default btn-md btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border: 1px solid #f5f5f5; border-radius: 4px;">
+                <span class="button-text"></span>
+                <span class="caret-holder">
+                    <span class="caret"></span>
+                </span>
+            </button>
+            <ul class="dropdown-menu" style="width: 100%">
+                <li>
+                    <a href="@Url.Action("Index", "AllPosts", new { id = "" })">All Categories</a>
+                </li>
+                <!-- JS populates the categories -->
+            </ul>
+        </div>
+    </div>
+
+    <div id="blog-menu-tags">
+        <div>
+            <div style="padding-bottom: 10px"><b>All Tags:</b></div>
+            <div class="tag-link-contents">
+                <!-- JS populates the tag links -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,413 @@
+﻿@import "../../Bootstrap/less/variables.less";
+@import "theme.less";
+@import "bootstrap-fa-override.less";
+
+
+body, header, main, footer {
+    .no-spacing;
+}
+
+#main-content {
+    min-height: @content-min-height-sm;
+
+    @media screen  and (min-width: @screen-sm-min) {// and (orientation: landscape) {
+        min-height: @content-min-height-lg;
+    }
+}
+
+nav {
+    background-color: @navbar-bg !important;
+    border-color: @navbar-bg !important;
+    min-height: 0 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: @dark-grey;
+}
+
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+    }
+
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
+}
+
+.navbar-selected {
+    border-bottom-color: @navbar-selected-border !important;
+}
+
+.navbar-highlight {
+    background-color: @navbar-highlight-bg !important;
+    color: @navbar-highlight-color !important;
+    border-bottom-color: @navbar-highlight-border !important;
+
+    & > a {
+        background-color: @navbar-highlight-bg !important;
+        color: @navbar-highlight-color !important;
+    }
+}
+
+.sub-menu-navbar-highlight {
+    background-color: @submenu-navbar-highlight-bg !important;
+    color: @submenu-navbar-highlight-color !important;
+    border-bottom-color: @submenu-navbar-highlight-border !important;
+
+    & > a {
+        background-color: @submenu-navbar-highlight-bg !important;
+        color: @submenu-navbar-highlight-color !important;
+    }
+}
+
+.brand-name {
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-size: 1.2em !important;
+    text-decoration: none;
+    text-transform: none;
+}
+
+.brand-slogan {
+    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-size: 0.7em;
+    text-decoration: none;
+    text-transform: none;
+}
+
+.brand-name-xs {
+    color: #ddd;
+    padding: 13px 15px 13px 12px !important;
+    border-bottom: 3px solid @navbar-bg;
+
+    &:hover,
+    &:focus {
+        .navbar-highlight;
+    }
+}
+
+.brand-container {
+    padding: 0;
+
+    & > ul {
+        display: none;
+
+        li {
+            border-bottom: 1px solid @navbar-border;
+
+            a {
+                text-transform: uppercase;
+            }
+
+            &:hover,
+            &:focus {
+                .navbar-highlight;
+            }
+        }
+    }
+
+    &:hover,
+    &:focus {
+        & > ul {
+            display: inline-block;
+            margin-top: 0 !important;
+        }
+    }
+}
+
+#menu {
+    & > li {
+        border-bottom: @navbar-border-size solid @navbar-bg;
+
+        & > a {
+            color: @navbar-color;
+            padding: 10px 16px !important;
+            font-size: @font-size;
+        }
+
+        & > ul {
+            margin-top: 3px !important;
+        }
+
+        &:hover,
+        &:focus {
+            //.navbar-highlight;
+
+            a {
+                color: @navbar-highlight-color;
+            }
+        }
+    }
+
+    li {
+        & > ul {
+            display: none;
+        }
+
+        &:hover,
+        &:focus {
+            //.sub-menu-navbar-highlight;
+
+            & > ul {
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.sub-menu-navbar {
+    border-radius: 8px;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, .3);
+    margin-top: 2px !important;
+    margin-left: -1px !important;
+    padding: 0 !important;
+
+    li {
+        position: relative;
+        color: @submenu-navbar-color;
+        //background-color: @submenu-navbar-bg;
+        background-image: linear-gradient(to bottom, @submenu-navbar-bg, lighten(@submenu-navbar-bg, 5%));
+        border-bottom: @submenu-navbar-border-size solid @submenu-navbar-border;
+        cursor: pointer;
+        padding: 0 !important;
+
+        a {
+            color: @submenu-navbar-color !important;
+            text-decoration: none;
+            padding: 8px 22px 7px 15px !important;
+            font-size: @font-size;
+
+            &:hover,
+            &:focus {
+                color: @submenu-navbar-highlight-color;
+                background-color: @submenu-navbar-highlight-bg;
+            }
+        }
+
+        &:last-child {
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        &:hover,
+        &:focus {
+            .sub-menu-navbar-highlight;
+
+            a {
+                color: @submenu-navbar-highlight-color;
+            }
+        }
+    }
+}
+
+.side-menu {
+    position: absolute !important;
+    display: block;
+    overflow: visible;
+    left: 100% !important;
+    top: -3px !important;
+    z-index: +1;
+}
+
+.breadcrumbs-container {
+    position: fixed;
+    top: 42px;
+    left: 0;
+    right: 0;
+    z-index: 1029;
+    background-color: @breadcrumb-bg;
+
+    ol {
+        margin-bottom: 0;
+    }
+}
+
+.arrow-down {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 10px;
+    vertical-align: middle;
+    border-top: @caret-width-large dashed;
+    border-top: @caret-width-large solid ~"\9"; // IE8
+    border-right: @caret-width-large solid transparent;
+    border-left: @caret-width-large solid transparent;
+}
+
+.arrow-right {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 10px;
+    vertical-align: middle;
+    border-left: @caret-width-large dashed;
+    border-left: @caret-width-large solid ~"\9"; // IE8
+    border-top: @caret-width-large solid transparent;
+    border-bottom: @caret-width-large solid transparent;
+}
+
+#js-error-alert-container {
+    font-family: Verdana;
+    width: 450px;
+    top: 55px;
+    right: 10px;
+    position: absolute;
+    z-index: 1030;
+
+    & > div {
+        display: none;
+        color: @js-error-alert-color;
+        background-color: @js-error-alert-bg;
+        white-space: nowrap;
+        margin: 10px 0;
+        padding: 8px 40px 8px 15px;
+        border-radius: 6px;
+        box-shadow: 2px 6px 8px rgba(255, 0, 0, .25);
+
+        span {
+            float: right;
+            margin-right: -25px;
+            cursor: pointer;
+        }
+    }
+}
+
+.footer-menu {
+    border-top: 5px solid @footer-menu-border;
+    padding: 20px 0 30px 0;
+    background-color: @footer-menu-bg;
+
+    .inline {
+        display: inline;
+    }
+
+    .heading {
+        padding: 10px 0;
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    a {
+        color: #000;
+    }
+}
+
+.footer {
+    background-color: @navbar-bg;
+    border-color: @navbar-border;
+
+    p {
+        color: @navbar-color;
+        padding: 10px 0;
+        margin: 0;
+    }
+}
+
+#work-in-progress {
+    display: none;
+    position: fixed; 
+    top: 33%; 
+    left: 42%; 
+    z-index: 1100;
+
+    span {
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%;
+        height:100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 0;
+    }
+
+    i {
+        color: #eee;
+    }
+
+    div {
+        color: @navbar-inverse-bg;
+        margin-left: -25px;
+        font-weight: bold;
+    }
+}
+
+.top-header {
+    border-bottom: 1px dotted #747474;
+
+    .search-button {
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    ul {
+        display: inline-block;
+    }
+
+    .separator {
+        padding: 15px 5px;
+        color: @navbar-inverse-color;
+    }
+}
+
+.btn, a {
+    outline: 0;
+
+    &:hover,
+    &:active,
+    &:focus {
+        outline: 0;
+    }
+}
+
+body {
+    font-size: @font-size !important;
+}
+
+.virtual-keypad {
+    h3 {
+        text-align: center;
+    }
+
+    div {
+        display: block;
+        margin: 3px 4px;
+        text-align: center;
+    }
+
+    span {
+        display: inline-block;
+        margin: 3px 4px;
+        padding: 10px 15px;
+        background-color: #eee;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type="password"] {
+        display: block;
+        margin : 0 auto;
+    }
+}
+
+.no-spacing {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    //max-width: 280px;
+}

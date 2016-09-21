@@ -1,0 +1,44 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Page Not Found";
+}
+
+@section breadcrumbs {
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-1_3x"></i></a></li>
+    </ol>
+}
+
+<div>
+    <h3 class="text-uppercase" style="color: #e00; display: inline;">
+        <i class="fa fa-times-circle fa-1_3x"></i>&nbsp; @ViewBag.Title
+    </h3>
+
+    @if (TempData.Keys.Contains("IsDebugMode") && TempData["IsDebugMode"] != null && (bool)TempData["IsDebugMode"])
+    {
+        <span style="font-size: 0.9em">
+            &nbsp; (Switch back to <a href="#" onclick="window.location.href = 'http://www.guruin.net' + window.location.pathname + window.location.search">LIVE</a> version)
+        </span>
+    }
+    else
+    {
+        <span style="font-size: 0.9em">
+            &nbsp; (Check out <a href="#" onclick="window.location.href = 'http://dev.guruin.net' + window.location.pathname + window.location.search">DEV</a> version)
+        </span>
+    }
+
+    @if (TempData.Keys.Contains("ShowExceptionDetails") && TempData["ShowExceptionDetails"] != null && (bool)TempData["ShowExceptionDetails"] == true
+        && Model.Exception != null && !string.IsNullOrWhiteSpace(Model.Exception.Message) && Model.Exception.Message != "Exception of type 'System.Exception' was thrown.")
+    {
+        Html.RenderPartial("_exceptionDetails", Model.Exception);
+    }
+    else
+    {
+        <h5>
+            Sorry. The page you are looking for does not exist.
+        </h5>
+        <p style="margin-top: 40px"><b>Please navigate to the required information using the menu bar above, or by clicking <a href="#" onclick="window.history.back();">back</a>.</b></p>
+        <div><img alt="Page Not Found" src="~/Images/page-not-found.jpg"></div>
+    }
+</div>

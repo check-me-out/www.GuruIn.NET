@@ -1,0 +1,105 @@
+﻿@model WebFramework.ViewModels.ContactViewModel
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+@section breadcrumbs {
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-1_3x"></i></a></li>
+        <li><a href="#">Contact</a></li>
+    </ol>
+}
+
+<div>
+</div>
+
+<div>
+    @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @class = "form-horizontal", id = "contact-form" }))
+    {
+        <div class="row" style="margin: 10px 0 20px 0">
+            <div class="col-lg-4 col-md-5 col-sm-8 col-xs-12" style="padding: 10px 0">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-user fa-fw"></i></div>
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", id = "contact-name", placeholder = "Your Name" })
+                </div>
+                @Html.ValidationMessageFor(model => model.Name)
+                <span id="contact-name-custom-error"></span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-4 col-md-5 col-sm-8 col-xs-12" style="padding: 10px 0">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></div>
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", id = "contact-email", placeholder = "Email (recommended)" })
+                </div>
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div id="copy-user-container" class="col-lg-3 col-md-3 col-sm-4 col-xs-12 checkbox" style="padding: 15px">
+                <label>
+                    @Html.CheckBoxFor(model => model.CopyUser)
+                    <span>Send me a copy <br /><span style="font-size: 0.85em">(Be sure to check your spam)</span></span>
+                    @Html.ValidationMessageFor(model => model.CopyUser)
+                </label>
+                <span class="field-validation-valid" data-valmsg-for="CopyUser" data-valmsg-replace="true"></span>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="col-lg-7 col-md-8 col-sm-12 col-xs-12" style="padding: 10px 0">
+                @Html.TextAreaFor(model => model.Message, new { @class = "form-control", id = "contact-message", rows = "7", placeholder = "Enter your message..." })
+                @Html.ValidationMessageFor(model => model.Message)
+                <span id="new-comment-content-custom-error"></span>
+            </div>
+            @Html.AntiForgeryToken()
+
+            <div class="clearfix"></div>
+            <div style="padding: 10px 0">
+                <button class="btn btn-custom-success btn-md">
+                    Send &nbsp; <i class="fa fa-send fa-1_1x"></i>
+                </button>
+            </div>
+
+            <div class="submit-error"></div>
+            @Html.ValidationSummary(true)
+        </div>
+    }
+</div>
+
+@section pageStyle {
+    @Styles.Render("~/bundles/form-data-styles")
+}
+
+@section pageScript {
+    @Scripts.Render("~/bundles/form-data-validation")
+
+    <script type="text/javascript">
+
+        $("#copy-user-container").hide();
+        $("#contact-email").on("keyup focusout", function (event) {
+            var value = $("#contact-email").val();
+            if (value) {
+                $("#copy-user-container").show();
+            }
+            else {
+                $("#copy-user-container").hide();
+            }
+        });
+
+    </script>
+}
+
+@*
+    <h2>@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+
+    <address>
+        One Microsoft Way<br />
+        Redmond, WA 98052-6399<br />
+        <abbr title="Phone">P:</abbr>
+        425.555.0100
+    </address>
+
+    <address>
+        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    </address>
+*@

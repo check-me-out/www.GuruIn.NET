@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "GDrive Security";
+
+    if (!string.IsNullOrWhiteSpace(ViewBag.Layout))
+    {
+        Layout = ViewBag.Layout;
+    }
+}
+
+@section breadcrumbs {
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-1_3x"></i></a></li>
+        <li class="active"><a href="@Url.Action("Login", "Security")">Security</a></li>
+    </ol>
+}
+
+<div style="margin-top: 30px">
+    @using (Html.BeginForm("Login", "Security", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken();
+
+        @Html.Partial("_virtualKeypad", (string)ViewBag.ReturnUrl)
+
+        <button class="btn btn-custom-success" type="submit" style="display: block; margin: 0 auto;">&nbsp;&nbsp; Enter &nbsp;&nbsp;</button>
+        <br />
+        <div style="text-align: center; font-size: 0.8em">(Hack: Enter <strong>@ViewBag.Code</strong> to get past security)</div>
+        <br />
+        <div style="text-align: center">
+            @Html.ValidationSummary()
+        </div>
+    }
+</div>
+
+@section pageStyle {
+    @Styles.Render("~/bundles/form-data-styles")
+}
+
+@section pageScript {
+    @Scripts.Render("~/bundles/form-data-validation")
+}

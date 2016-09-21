@@ -1,0 +1,93 @@
+﻿@model WebFramework.Models.Products.Item
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Name, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+    <div class="col-lg-9 col-md-9 col-sm-9">
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Description, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+    <div class="col-lg-9 col-md-9 col-sm-9">
+        @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "3" })
+        @Html.ValidationMessageFor(model => model.Description)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.CurrentPrice, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+    <div class="col-lg-9 col-md-9 col-sm-9">
+        <div class="input-group">
+            <div class="input-group-addon">£</div>
+            @Html.TextBoxFor(model => model.CurrentPrice, new { @class = "form-control" })
+            <div class="input-group-addon">.00</div>
+        </div>
+        @Html.ValidationMessageFor(model => model.CurrentPrice)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.NewPrice, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+    <div class="col-lg-9 col-md-9 col-sm-9">
+        <div class="input-group">
+            <div class="input-group-addon">£</div>
+            @Html.TextBoxFor(model => model.NewPrice, new { @class = "form-control" })
+            <div class="input-group-addon">.00</div>
+        </div>
+        @Html.ValidationMessageFor(model => model.NewPrice)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.CreatedBy, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+    <div class="col-lg-9 col-md-9 col-sm-9">
+        @Html.TextBoxFor(model => model.CreatedBy, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CreatedBy)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.CreatedOn, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+    <div class="col-lg-9 col-md-9 col-sm-9">
+        @Html.TextBoxFor(model => model.CreatedOn, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CreatedOn)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.UpdatedBy, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+    <div class="col-lg-9 col-md-9 col-sm-9">
+        @Html.TextBoxFor(model => model.UpdatedBy, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.UpdatedBy)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.UpdatedOn, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+    <div class="col-lg-9 col-md-9 col-sm-9">
+        @Html.TextBoxFor(model => model.UpdatedOn, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.UpdatedOn)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.BuyUrl, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+    <div class="col-lg-9 col-md-9 col-sm-9">
+        @Html.TextBoxFor(model => model.BuyUrl, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.BuyUrl)
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-lg-9 col-md-9 col-sm-9">
+        <div class="checkbox">
+            <label>
+                <input id="Deleted" name="Deleted" value="" type="checkbox">
+                <b>Deleted</b>
+            </label>
+            <span class="field-validation-valid" data-valmsg-for="Deleted" data-valmsg-replace="true"></span>
+        </div>
+    </div>
+</div>

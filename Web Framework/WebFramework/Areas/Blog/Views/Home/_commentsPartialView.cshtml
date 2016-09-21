@@ -1,0 +1,77 @@
+﻿@using WebFramework.Areas.Blog.ViewModels
+@model CommentViewModel
+
+<div>
+    @{
+        var provideFeedbackMessage = "";
+        if (Model.AllComments != null && Model.AllComments.Count == 0)
+        {
+            provideFeedbackMessage = "Start a discussion...";
+        }
+        else
+        {
+            provideFeedbackMessage = "Join in for a discussion...";
+        }
+    }
+
+    @if (Model.DisableNewComment)
+    {
+        <span>Sorry, new comments have been disabled for this post!</span>
+    }
+    else
+    {
+        using (Html.BeginForm("AddComment", "Blogs", FormMethod.Post, new { @class = "form-horizontal", id = "new-comment-form" }))
+        {
+            @Html.HiddenFor(model => model.PostId)
+            @Html.HiddenFor(model => model.DisableNewComment)
+            @Html.AntiForgeryToken()
+            @Html.TextAreaFor(model => model.NewComment.Content, new { @class = "form-control", id = "new-comment-content", rows = "3", placeholder = provideFeedbackMessage })
+            @Html.ValidationMessageFor(model => model.NewComment.Content)
+            <span id="new-comment-content-custom-error"></span>
+
+            <div class="form-inline row" style="margin: 10px 0 20px 0">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding-left: 0; padding-right: 0">
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="fa fa-user fa-fw"></i></div>
+                        @Html.TextBoxFor(model => model.NewComment.Name, new { @class = "form-control", id = "new-comment-name", placeholder = "Display Name", style = "width: 100%" })
+                    </div>
+                    <br />
+                    @Html.ValidationMessageFor(model => model.NewComment.Name)
+                    <span id="new-comment-name-custom-error"></span>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding-left: 0; padding-right: 0">
+                    <div class="input-group">
+                        <div class="input-group-addon hidd"><i class="fa fa-envelope fa-fw"></i></div>
+                        @Html.TextBoxFor(model => model.NewComment.Email, new { @class = "form-control", placeholder = "Email (private, optional)", style = "width: 100%" })
+                    </div>
+                    <br />
+                    @Html.ValidationMessageFor(model => model.NewComment.Email)
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding-right: 0">
+                    <div class="visible-xs" style="padding-top: 15px"></div>
+                    <button class="btn btn-custom-success btn-md" style="float: right">
+                        Add Comment &nbsp; <i class="fa fa-plus-square fa-1_1x"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="submit-error"></div>
+
+            @Html.ValidationSummary(true)
+        }
+    }
+</div>
+
+<div class="clearfix"></div>
+
+<div class="comment-history">
+    @{ var comments = Model.AllComments.OrderByDescending(o => o.CommentedOn).ToList();
+     for (int i = 0; i < comments.Count; i++)
+     {
+        <div id="comment-@comments[i].Id" class="comment">
+            <div class="name"><a href="#comment-@comments[i].Id">@comments[i].Name</a></div>
+            <div class="content">@MvcHtmlString.Create(comments[i].Content)</div>
+            <div class="timestamp">@comments[i].CommentedOn</div>
+        </div>
+     }
+    }
+</div>

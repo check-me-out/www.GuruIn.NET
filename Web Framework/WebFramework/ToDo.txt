@@ -1,0 +1,22 @@
+HTML5:
+======
+meta tags - @ViewBag.Keywords
+Security - CSRF, XSS, XSRF & open redirection attack
+noscript
+https://validator.w3.org/
+https://en.wikipedia.org/wiki/List_of_colors:_A%E2%80%93F
+
+
+Blog/Content:
+=============
+Global asax
+Error Handling
+Security
+Auth
+Versioning with T4 template
+Implementing Blog & styling c# code
+ALM
+NuGet
+JS intellisense - _references.js
+Bundling & Minification
+CDN with SRI & fallback - https://www.srihash.org/
