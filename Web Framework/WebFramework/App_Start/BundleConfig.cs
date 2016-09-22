@@ -59,12 +59,12 @@ namespace WebFramework
                          "~/Areas/Blog/Scripts/AllPosts.VM.js",
                          "~/Areas/Blog/Scripts/AllPosts.Controller.js"));
 
-#if DEBUG
+//#if DEBUG
             bundles.GetBundleFor("~/bundles/home-page-layout-js").Include("~/Content/Site/js/debug-only.js");
             bundles.GetBundleFor("~/bundles/centered-layout-js").Include("~/Content/Site/js/debug-only.js");
             bundles.GetBundleFor("~/bundles/submenu-layout-js").Include("~/Content/Site/js/debug-only.js");
             bundles.GetBundleFor("~/bundles/blog-layout-js").Include("~/Content/Site/js/debug-only.js");
-#endif
+//#endif
 
 #if LOCAL // && DEBUG
             BundleTable.EnableOptimizations = false;

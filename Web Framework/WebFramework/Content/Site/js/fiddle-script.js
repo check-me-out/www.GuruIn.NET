@@ -54,7 +54,7 @@ define('fiddle-scripts', ['jquery', 'bootstrap'], function ($) {
 
         Alertify('Testing custom "sucess" popup message!', AlertSeverity.SUCCESS);
 
-        JSErrorOnPurposeForDemo
+        GenerateJsError();
     }
 
     RegisterOnload(init);

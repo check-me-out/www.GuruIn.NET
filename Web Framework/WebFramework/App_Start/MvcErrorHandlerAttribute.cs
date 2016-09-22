@@ -45,8 +45,9 @@ namespace WebFramework
             var controllerName = (string)filterContext.RouteData.Values["controller"];
             var actionName = (string)filterContext.RouteData.Values["action"];
 
-#if DEBUG
+//#if DEBUG
             filterContext.Controller.TempData["IsDebugMode"] = true;
+#if DEBUG
             filterContext.Controller.TempData["ShowExceptionDetails"] = true;
 #endif
 

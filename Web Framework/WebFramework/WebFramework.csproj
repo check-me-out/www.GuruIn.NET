@@ -268,6 +268,8 @@
     <Content Include="Areas\Blog\Scripts\AllPosts.Controller.js" />
     <Content Include="Areas\Blog\Scripts\AllPosts.VM.js" />
     <Content Include="Content\AngularJs\angular-csp.css" />
+    <Content Include="Content\AngularJs\angular-route.js" />
+    <Content Include="Content\AngularJs\angular-route.min.js" />
     <Content Include="Content\AngularJs\angular.js" />
     <Content Include="Content\AngularJs\angular.min.js" />
     <Content Include="Content\Bootstrap\font-awesome\css\font-awesome.css" />
@@ -391,7 +393,12 @@
     </Content>
     <None Include="Content\jQuery\_references.js" />
     <Content Include="Content\RequireJs\require.min.js" />
-    <Content Include="Content\Site\Ecommerce\product-list.api.js" />
+    <Content Include="Content\Site\Ecommerce\eCommerce.service.js" />
+    <Content Include="Content\Site\Ecommerce\product-detail\product-detail.component.js" />
+    <Content Include="Content\Site\Ecommerce\product-detail\product-detail.module.js" />
+    <Content Include="Content\Site\Ecommerce\product-detail\product-detail.template.html" />
+    <Content Include="Content\Site\Ecommerce\product-list\product-list.module.js" />
+    <Content Include="Content\Site\js\angular.config.js" />
     <Content Include="Content\Site\js\fiddle-script.js" />
     <Content Include="Content\Site\js\home-page-layout.js" />
     <Content Include="Content\Site\js\centered-layout.js" />
@@ -429,8 +436,8 @@
     <Content Include="Content\Site\less\css\submenu-layout.min.css" />
     <Content Include="Content\Site\less\css\theme.css" />
     <Content Include="Content\Site\less\css\theme.min.css" />
-    <Content Include="Content\Site\Ecommerce\product-list.component.js" />
-    <Content Include="Content\Site\Ecommerce\product-list.template.html" />
+    <Content Include="Content\Site\Ecommerce\product-list\product-list.component.js" />
+    <Content Include="Content\Site\Ecommerce\product-list\product-list.template.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Bootstrap\fonts\glyphicons-halflings-regular_.eot" />

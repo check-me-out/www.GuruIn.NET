@@ -41,6 +41,22 @@
 </div>
 
 <div class="form-group">
+    @Html.LabelFor(model => model.ImageUrl, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+    <div class="col-lg-9 col-md-9 col-sm-9">
+        @Html.TextBoxFor(model => model.ImageUrl, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ImageUrl)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.BuyUrl, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+    <div class="col-lg-9 col-md-9 col-sm-9">
+        @Html.TextBoxFor(model => model.BuyUrl, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.BuyUrl)
+    </div>
+</div>
+
+<div class="form-group">
     @Html.LabelFor(model => model.CreatedBy, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
     <div class="col-lg-9 col-md-9 col-sm-9">
         @Html.TextBoxFor(model => model.CreatedBy, new { @class = "form-control" })
@@ -69,14 +85,6 @@
     <div class="col-lg-9 col-md-9 col-sm-9">
         @Html.TextBoxFor(model => model.UpdatedOn, new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.UpdatedOn)
-    </div>
-</div>
-
-<div class="form-group">
-    @Html.LabelFor(model => model.BuyUrl, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
-    <div class="col-lg-9 col-md-9 col-sm-9">
-        @Html.TextBoxFor(model => model.BuyUrl, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.BuyUrl)
     </div>
 </div>
 

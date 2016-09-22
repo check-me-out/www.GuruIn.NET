@@ -32,9 +32,9 @@
 
             TempData["VersionInfo"] = GetVersionInfo();
 
-#if DEBUG
+//#if DEBUG
             TempData["IsDebugMode"] = true;
-#endif
+//#endif
         }
 
         protected override void OnResultExecuted(ResultExecutedContext filterContext)
@@ -74,8 +74,9 @@
 
             filterContext.Controller.TempData["VersionInfo"] = GetVersionInfo();
 
-#if DEBUG
+//#if DEBUG
             filterContext.Controller.TempData["IsDebugMode"] = true;
+#if DEBUG
             filterContext.Controller.TempData["ShowExceptionDetails"] = true;
 #endif
 

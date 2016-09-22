@@ -17,15 +17,6 @@
     <div id="sidebar-items">
         <ul class="list-group submenu">
             <li class="list-group-item">
-                <a href="@Url.Action("Index", "Ecommerce")">
-                    Collections
-                </a>
-                @if (!string.IsNullOrWhiteSpace(Model))
-                {
-                    <span class="badge">@Model</span>
-                }
-            </li>
-            <li class="list-group-item">
                 <a href="@Url.Action("List", "Dashboard")">
                     List Of Products
                 </a>
@@ -38,6 +29,15 @@
                 <a href="@Url.Action("Create", "Dashboard")">
                     Create New Product
                 </a>
+            </li>
+            <li class="list-group-item">
+                <a href="@Url.Action("Index", "Ecommerce")">
+                    eCommerce
+                </a>
+                @if (!string.IsNullOrWhiteSpace(Model))
+                {
+                    <span class="badge">@Model</span>
+                }
             </li>
         </ul>
     </div>

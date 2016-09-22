@@ -58,6 +58,20 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(model => model.ImageUrl, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.ImageUrl</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.BuyUrl, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
+        <div class="col-lg-9 col-md-9 col-sm-9">
+            <p class="form-control-static">@Model.BuyUrl</p>
+        </div>
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(model => model.CreatedBy, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
         <div class="col-lg-9 col-md-9 col-sm-9">
             <p class="form-control-static">@Model.CreatedBy</p>
@@ -85,12 +99,6 @@
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.BuyUrl, new { @class = "col-lg-3 col-md-3 col-sm-3 control-label" })
-        <div class="col-lg-9 col-md-9 col-sm-9">
-            <p class="form-control-static">@Model.BuyUrl</p>
-        </div>
-    </div>
     <p style="padding-top: 20px; float: right">
         <a href="@Url.Action("List", "Dashboard")" class="btn btn-custom-default">
             Back &nbsp; <i class="fa fa-arrow-left fa-1_1x"></i>

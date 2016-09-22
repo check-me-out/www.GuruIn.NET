@@ -26,11 +26,11 @@ define('error-handler', ['jquery'], function ($) {
         return false;
     }
 
-    /*function ProcessError(message, url, lineNumber) {
+    function GenerateJsError() {
 
-        return ProcessError(message, url, lineNumber, 0, null);
+        DemoJsErrorCaughtNLogged(); // undefined function!
 
-    }*/
+    }
 
     function LogErrorToServer(msg) {
         $.ajax({

@@ -106,8 +106,9 @@ namespace WebFramework
 
             tempData["VersionInfo"] = BaseController.GetVersionInfo();
 
-#if DEBUG
+//#if DEBUG
             tempData["IsDebugMode"] = true;
+#if DEBUG
             tempData["ShowExceptionDetails"] = true;
 #endif
 

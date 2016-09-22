@@ -46,5 +46,11 @@
             var list = _db.Items.ToList();
             return list;
         }
+
+        public Models.Products.Item GetProduct(int data)
+        {
+            var item = _db.Items.Find(data);
+            return item;
+        }
     }
 }

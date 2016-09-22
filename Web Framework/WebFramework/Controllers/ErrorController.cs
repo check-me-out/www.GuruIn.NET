@@ -19,8 +19,9 @@ namespace WebFramework.Controllers
 
             var ex = RetrieveLastException();
 
-#if DEBUG
+//#if DEBUG
             TempData["IsDebugMode"] = true;
+#if DEBUG
             TempData["ShowExceptionDetails"] = true;
 #endif
 
@@ -36,8 +37,9 @@ namespace WebFramework.Controllers
 
             var ex = RetrieveLastException();
 
-#if DEBUG
+//#if DEBUG
             TempData["IsDebugMode"] = true;
+#if DEBUG
             TempData["ShowExceptionDetails"] = true;
 #endif
 

@@ -1,0 +1,93 @@
+<section class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0 15px 0 0">
+    <div class="row">
+        <section class="filter-menu">
+            <div class="col-sm-3 visible-sm col-xs-1 visible-xs"></div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-10 text-uppercase" style="padding: 20px">
+                <br />
+                <div style="padding-bottom: 20px; border-bottom: 1px solid #aaa">
+                    <div class="text-center" style="padding: 8px; color: whitesmoke; border: 2px solid whitesmoke; width: 100%; border-radius: 5px; font-weight: bold; cursor: default">
+                        SORTING
+                    </div>
+                    <br />
+                    <select ng-model="$ctrl.OrderProperty" class="form-control">
+                        <option value="NewPrice" selected="selected">Price (low to high)</option>
+                        <option value="NewPrice*-1">Price (high to low)</option>
+                        <option value="Name">Name (asc)</option>
+                    </select>
+                </div>
+                <div style="padding-top: 20px; padding-bottom: 20px; border-top: 1px solid #777">
+                    <div class="text-center" style="padding: 8px; color: whitesmoke; border: 2px solid whitesmoke; width: 100%; border-radius: 5px; font-weight: bold; cursor: default">
+                        FILTERING
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <div class="search-button input-group-addon">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <input ng-model="$ctrl.ByName" class="form-control" placeholder="By name..." />
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <div class="input-group-addon">&pound;</div>
+                        <input ng-model="$ctrl.FromPrice" class="form-control" placeholder="From..." />
+                    </div>
+                    <br />
+                    <div class="input-group">
+                        <div class="input-group-addon">&pound;</div>
+                        <input ng-model="$ctrl.ToPrice" class="form-control" placeholder="To..." />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="main-content" class="col-lg-10 col-md-9 col-sm-12 col-xs-12" style="background-color: #fff">
+            <div style="margin: 0; padding: 15px 25px 25px 15px">
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6" style="padding-top: 25px;">
+                        <div class="selected-image">
+                            <img ng-src="{{$ctrl.SelectedImageUrl}}" alt="{{$ctrl.Product.Name}}" class="img-thumbnail" />
+                        </div>
+                        <div style="padding: 15px 0">
+                            <img ng-src="{{$ctrl.Product.ImageUrl}}" ng-click="$ctrl.ChangeImageSelection($ctrl.Product.ImageUrl)" alt="{{$ctrl.Product.Name}}" class="img-thumbnail" style="width: 31%; height: 25%; cursor: pointer" />
+                            <img ng-src="{{$ctrl.Product.ImageUrl}}" ng-click="$ctrl.ChangeImageSelection($ctrl.Product.ImageUrl)" alt="{{$ctrl.Product.Name}}" class="img-thumbnail" style="width: 31%; height: 25%; cursor: pointer" />
+                            <img ng-src="{{$ctrl.Product.ImageUrl}}" ng-click="$ctrl.ChangeImageSelection($ctrl.Product.ImageUrl)" alt="{{$ctrl.Product.Name}}" class="img-thumbnail" style="width: 31%; height: 25%; cursor: pointer" />
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-6 col-sm-8 col-xs-6">
+                        <h1 class="text-uppercase">
+                            {{$ctrl.Product.Name}}
+                        </h1>
+                        <div class="text-justify" style="padding: 15px 0 0 0">
+                            {{$ctrl.Product.Description}}
+                        </div>
+                        <div class="clearfix" style="padding-top: 30px"></div>
+                        <div style="padding: 15px 0">
+                            Rating: 
+                            <i class="fa fa-star fa-1_1x"></i>
+                            <i class="fa fa-star fa-1_1x"></i>
+                            <i class="fa fa-star fa-1_1x"></i>
+                            <i class="fa fa-star fa-1_1x"></i>
+                            <i class="fa fa-star-half-full fa-1_1x"></i>
+                        </div>
+                        <div>
+                            <span style="font-weight: bold; color: red; text-decoration: line-through">
+                                Was &pound;{{$ctrl.Product.CurrentPrice}}
+                            </span>
+                            <span style="width: 25px;">&nbsp;</span>
+                            <span style="font-weight: bold; font-size:1.2em; color: cornflowerblue">
+                                Now &pound;{{$ctrl.Product.NewPrice}}
+                            </span>
+                            <a class="btn btn-custom-success" href="{{$ctrl.Product.BuyUrl}}" style="font-weight: bold; float: right">
+                                Buy
+                            </a>
+                            <span style="float: right; width: 15px;">&nbsp;</span>
+                            <a class="btn btn-custom-default" href="#!/products" style="font-weight: bold; float: right">
+                                Back
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
