@@ -38,7 +38,7 @@ namespace WebFramework.Persistence.Migrations.Blog
             context.Tags.AddOrUpdate(new Tag { Id = 1, Name = "AngularJs", UrlSlug = "angular-js", Description = "Angular JS", Class = "size-lg" });
             context.Tags.AddOrUpdate(new Tag { Id = 1, Name = "Bootstrap", UrlSlug = "bootstrap", Description = "Bootstrap", Class = "size-md" });
             context.Tags.AddOrUpdate(new Tag { Id = 1, Name = "Less-Sass", UrlSlug = "sass-less", Description = "Sass-Less" });
-            context.Tags.AddOrUpdate(new Tag { Id = 1, Name = "Type JS", UrlSlug = "type-js", Description = "Type JS", Class = "size-md" });
+            context.Tags.AddOrUpdate(new Tag { Id = 1, Name = "Type Script", UrlSlug = "type-js", Description = "Type Script", Class = "size-md" });
 
             SeedBadWords(context);
 

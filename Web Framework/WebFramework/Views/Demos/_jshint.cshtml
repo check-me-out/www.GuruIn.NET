@@ -1,0 +1,69 @@
+﻿<section>
+    <h3>Javascript Linting</h3>
+    <hr />
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Getting started:
+        <pre>
+npm install -g jshint
+npm install --save-dev jshint :: As a development dependency within a project.
+        </pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Lint a specific file:
+        <pre>jshint product-list/product-list.component.js</pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Specifying a config file explicitly:
+        <pre>jshint --config ../path/to/my/config.json</pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Some configs that can be used in your config in JSON format: curly, eqeqeq, maxdepth, strict, undef, unused, eqnull, browser, devel, jasmine, jquery, node, qunit
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Some linting CLI options:
+        <pre>jshint --reporter=checkstyle --verbose --exclude-path=../test myfile.js</pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Some inline linting:
+<pre>
+/* jshint strict: true, vars: true, unused:true, eqnull:true */
+/* globals MY_LIB: false */ -- read-only
+/* globals -BAD_LIB */ -- black list
+/* jshint ignore:start */
+/* jshint ignore:end */
+// jshint ignore:line
+/* falls through */ -- switch statement cases
+</pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Typical <i>.jshintrc</i> file:
+<pre>
+{
+  "strict": "global",
+  "globals": {
+
+    // Angular
+    "angular": false,
+
+    // Angular mocks
+    "module": false,
+    "inject": false,
+
+    // Jasmine
+    "jasmine": false,
+    "describe": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "it": false,
+    "expect": false,
+
+    // Protractor
+    "browser": false,
+    "element": false,
+    "by": false
+  }
+}
+</pre>
+    </p>
+</section>
+

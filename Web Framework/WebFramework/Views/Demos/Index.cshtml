@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Demos";
 }
 
@@ -22,7 +21,7 @@
         @Html.Partial("_bootstrap")
     </script>
 
-    <script type="text/html" id="jasmin">
+    <script type="text/html" id="jasmine">
         @Html.Partial("_jasmin")
     </script>
 
@@ -34,8 +33,12 @@
         @Html.Partial("_sass-less")
     </script>
 
-    <script type="text/html" id="react-js">
-        @Html.Partial("_react-js")
+    <script type="text/html" id="bower-npm">
+        @Html.Partial("_bower-npm")
+    </script>
+
+    <script type="text/html" id="git-gulp">
+        @Html.Partial("_git-gulp")
     </script>
 
     <script type="text/html" id="knockout">
@@ -46,33 +49,43 @@
         @Html.Partial("_font-awesome")
     </script>
 
-    <script type="text/html" id="html5">
-        @Html.Partial("_html5")
+    <script type="text/html" id="jshint">
+        @Html.Partial("_jshint")
     </script>
 
     <script type="text/html" id="demo-selection">
         <section>
             <ul>
                 <li><a href="/Demos#bootstrap" onclick="return LoadContent('#bootstrap');">Bootstrap</a></li>
+                <li><a href="/Demos#jasmine" onclick="return LoadContent('#jasmine');">Jasmine Test</a></li>
+                <li><a href="/Demos#sass-less" onclick="return LoadContent('#sass-less');">Sass &amp; Scss</a></li>
+                <li><a href="/Demos#jshint" onclick="return LoadContent('#jshint');">JSHint</a></li>
+                <li><a href="/Demos#bower-npm" onclick="return LoadContent('#bower-npm');">npm &amp; Bower</a></li>
+                <li><a href="/Demos#git-gulp" onclick="return LoadContent('#git-gulp');">Git &amp; Gulp</a></li>
                 <li><a href="/Demos#angular" onclick="return LoadContent('#angular');">Angular JS</a></li>
                 <li><a href="/Demos#knockout" onclick="return LoadContent('#knockout');">Knockout JS</a></li>
-                <li><a href="/Demos#jasmin" onclick="return LoadContent('#jasmin');">QUnit / Jasmin</a></li>
-                <li><a href="/Demos#type-js" onclick="return LoadContent('#type-js');">Type js</a></li>
-                <li><a href="/Demos#sass-less" onclick="return LoadContent('#sass-less');">Sass / Scss</a></li>
-                <li><a href="/Demos#react-js" onclick="return LoadContent('#react-js');">npm / bower</a></li>
-                <li><a href="/Demos#html5" onclick="return LoadContent('#html5');">HTML 5</a></li>
                 <li><a href="/Demos#font-awesome" onclick="return LoadContent('#font-awesome');">Font Awesome</a></li>
+                <li><a href="/Demos#type-js" onclick="return LoadContent('#type-js');">Type Script</a></li>
             </ul>
         </section>
     </script>
 
 </div>
 
+@section pageStyle {
+    <style type="text/css">
+        pre {
+            display: inline-block;
+        }
+    </style>
+}
+
 @section pageScript {
     <script type="text/javascript">
         function LoadContent(id) {
             var html = $(id).html();
             $("#demo-area").html(html);
+            window.scrollTo(0, 0);
             return true;
         }
 

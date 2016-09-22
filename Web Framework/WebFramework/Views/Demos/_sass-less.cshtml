@@ -1,8 +1,94 @@
 ﻿<section>
-    <h3>SASS, SCSS &amp; LESS</h3>
+    <h3>SASS &amp; Sassy CSS</h3>
     <hr />
     <p>
-        Coming up soon...
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Getting started - First <b>install Ruby</b> &amp; use Ruby Gem command:
+        <pre>
+gem install sass
+sass -v :: Should give your version number if installed correctly.
+        </pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;SCSS is <b>Sass CSS</b>, and it differs from SASS only in syntax &amp; file extension. SCSS syntax is similar to LESS &amp; CSS.
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Compile your SASS/SCSS to CSS:
+        <pre>
+sass input.scss output.css
+        </pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Variables are declared using '$' symbol. Example:
+        <pre>
+$font-stack:    Helvetica, sans-serif;
+
+body {
+  font: 100% $font-stack;
+}
+        </pre>
+        <div>compiles to</div>
+        <pre>
+body {
+  font: 100% Helvetica, sans-serif;
+}
+        </pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;SASS supports <b>Nesting</b> much like LESS.
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;<b>Partials</b> - File names begin with underscore(_) & are not compiled on its own. They must be <b>imported</b> as below:
+        <pre>
+// _variables.scss
+
+$font-stack:    Helvetica, sans-serif;
+        </pre>
+        <div> </div>
+        <pre>
+// base.scss
+
+@@import 'variables'; // Exclude underscore(_) &amp; file extension.
+
+body {
+  font: 100% $font-stack;
+}
+        </pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;<b>Mixins</b> are more like <i>MACROS</i> of C &amp; C++ world. They are logical replacements of the literals, but not quite functions:
+        <pre>
+@@mixin border-radius($radius) {
+    border-radius: $radius;
+}
+
+.box { 
+    @@include border-radius(10px);
+}
+        </pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Same in <b>SASS syntax</b> - also notice that the syntax is based on indentation <i>without</i> braces ({}) and semi-colons (;):
+        <pre>
+=border-radius($radius)
+    border-radius: $radius
+
+.box
+    +border-radius(10px)
+
+        </pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;You can also achieve inheritance by using <b>extend</b>:
+        <pre>
+.message {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.success {
+    @@extend .message;
+    color: green;
+}
+        </pre>
     </p>
 </section>
-

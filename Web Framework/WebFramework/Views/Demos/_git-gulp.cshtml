@@ -1,0 +1,88 @@
+﻿<section>
+    <h3>Git Commands</h3>
+    <hr />
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Basic Git commands:
+<pre>
+git config ::- Get &amp; set repository / global options.
+git init ::- Creates an empty git repository.
+git clone ::- Clones a repository.
+git add -A ::- Add all files to the index.
+git status ::- Shows the working tree status.
+git commit -m "Comment" ::- Record changes to the repository.
+git log ::- Shows commit log.
+git checkout ::- Switch branches or restore  working tree files.
+git push ::- Send changes to the master branch of your remote repository.
+git pull ::- Gets latest.
+git stash ::- Shelve changes; Options include: apply, pop, list, show.
+</pre>
+    </p>
+    <h3>Gulp</h3>
+    <hr />
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Getting started:
+<pre>
+$ npm install --global gulp-cli
+</pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Initialize your project directory:
+<pre>
+$ npm init :: execute at project folder level.
+</pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;As a development dependency within a project:
+<pre>
+$ npm install --save-dev gulp
+</pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Create <i>gulpfile.js</i> at the root of your project (sample below):
+<pre>
+var gulp = require('gulp');
+var concat = require('gulp-concat'); var uglify = require('gulp-uglify'); 
+var imagemin = require('gulp-imagemin'); var sourcemaps = require('gulp-sourcemaps');
+var del = require('del');
+
+var paths = {
+  scripts: ['client/js/**/*.coffee', '!client/external/**/*.coffee'],
+  images: 'client/img/**/*'
+};
+
+// A gulpfile is just another node program and you can use any package available on npm
+gulp.task('clean', function() {
+  return del(['build']); // You can use multiple globbing patterns as you would with `gulp.src`
+});
+
+gulp.task('scripts', ['clean'], function() {
+  // with sourcemaps all the way down
+  return gulp.src(paths.scripts) // Minify and copy all JavaScript (except vendor scripts)
+    .pipe(sourcemaps.init()) // with sourcemaps all the way down
+    .pipe(uglify())
+    .pipe(concat('all.min.js'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('build/js'));
+});
+
+gulp.task('images', ['clean'], function() { // Copy all static images
+  return gulp.src(paths.images)
+    .pipe(imagemin({optimizationLevel: 5})) // Pass in options to the task
+    .pipe(gulp.dest('build/img'));
+});
+
+gulp.task('watch', function() { // Rerun the task when a file changes
+  gulp.watch(paths.scripts, ['scripts']);  gulp.watch(paths.images, ['images']);
+});
+
+gulp.task('default', ['watch', 'scripts', 'images']); // The default task
+</pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Finally, just run:
+<pre>
+$ gulp
+</pre>
+    </p>
+</section>
+

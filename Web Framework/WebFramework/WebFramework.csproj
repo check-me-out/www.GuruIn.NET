@@ -642,15 +642,16 @@
     <Content Include="Views\Security\_virtualKeypad.cshtml" />
     <Content Include="Views\Demos\_angular.cshtml" />
     <Content Include="Views\Demos\_bootstrap.cshtml" />
-    <Content Include="Views\Demos\_html5.cshtml" />
+    <Content Include="Views\Demos\_jshint.cshtml" />
     <Content Include="Views\Demos\_font-awesome.cshtml" />
     <Content Include="Views\Demos\_jasmin.cshtml" />
     <Content Include="Views\Demos\_knockout.cshtml" />
-    <Content Include="Views\Demos\_react-js.cshtml" />
+    <Content Include="Views\Demos\_bower-npm.cshtml" />
     <Content Include="Views\Demos\_sass-less.cshtml" />
     <Content Include="Views\Demos\_type-js.cshtml" />
     <Content Include="Views\Ecommerce\Index.cshtml" />
     <Content Include="Views\Shared\_filterLayout.cshtml" />
+    <Content Include="Views\Demos\_git-gulp.cshtml" />
     <None Include="Web.Dev.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

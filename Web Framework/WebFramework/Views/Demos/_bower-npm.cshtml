@@ -1,0 +1,87 @@
+﻿<section>
+    <h3>npm - Never Program Mad</h3>
+    <hr />
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;First things first - Node Package Manager (npm) command-line tool is bundled with Node.js. If you have it installed, then you already have npm too. If not, go download Node.js.
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Ensure you have installed correctly:
+<pre>
+$ node --version
+$ npm --version
+</pre>
+    </p>
+    <h3>Bower - Another Package Manager</h3>
+    <hr />
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Bower requires Node, npm &amp; Git. Once you have it, get started:
+<pre>
+$ npm install -g bower
+</pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Bower installs packages to <i>bower_components/</i> folder. A package can be a GitHub shorthand, a Git endpoint, a URL, local folder, and more. Find out more <a href="https://bower.io/docs/api/" target="_blank">here</a>&nbsp;<span class="glyphicon glyphicon-new-window"></span>.
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Typical <i>bower.json</i>:
+<pre>
+{
+  "name": "angular-phonecat",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/angular/angular-phonecat",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.5.x",
+    "angular-animate": "1.5.x",
+    "angular-mocks": "1.5.x",
+    "angular-resource": "1.5.x",
+    "angular-route": "1.5.x",
+    "bootstrap": "3.3.x",
+    "jquery": "2.2.x"
+  }
+}
+</pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Back to npm, a typical <i>package.json</i>:
+<pre>
+{
+  "name": "angular-phonecat",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A tutorial application for AngularJS",
+  "repository": "https://github.com/angular/angular-phonecat",
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "http-server": "^0.9.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.8",
+    "protractor": "^3.2.2"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+
+    "prestart": "npm install",
+    "start": "http-server ./app -a localhost -p 8000 -c-1",
+
+    "pretest": "npm install",
+    "test": "karma start karma.conf.js",
+    "test-single-run": "karma start karma.conf.js --single-run",
+
+    "preupdate-webdriver": "npm install",
+    "update-webdriver": "webdriver-manager update",
+
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor e2e-tests/protractor.conf.js",
+  }
+}
+</pre>
+    </p>
+</section>
+

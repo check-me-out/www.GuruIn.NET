@@ -1,8 +1,78 @@
 ﻿<section>
-    <h3>QUnit / Jasmin</h3>
+    <h3>Test your JS</h3>
     <hr />
     <p>
-        Coming up soon...
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Getting started:
+        <pre>
+npm install -g jasmine
+npm install --save-dev jasmine :: As a development dependency within a project.
+        </pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Initialize a project for Jasmine by creating a spec directory and config:
+        <pre>jasmine init</pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Run all your tests:
+        <pre>jasmine // uses <i>jasmine.json</i> configuration</pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Run tests in a specific file:
+        <pre>jasmine product-list/product-list.spec.js</pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Sample <i>jasmine.json</i> configuration
+        <pre>
+{
+    "spec_dir": "spec",
+    "spec_files": [ "**/*.[sS]pec.js" ],
+    "helpers": [ "helpers/**/*.js" ]
+}
+        </pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Typical setup:
+        <pre>jasmine JASMINE_CONFIG_PATH=spec/config/jasmine.json --no-color --stop-on-failure=true</pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Simple structure of a Jasmine test:
+        <pre>
+describe("A suite", function() { // SUITE
+
+    beforeEach(function() { // Setup
+    });
+
+    afterEach(function() { // Tear down
+    });
+
+    it("Tests a function", function() { // SPEC
+        var result = TEST_SUBJECT();
+        expect(result).toBe(true);
+    });
+
+    it("Tests another function", function() { // SPEC
+        var result = TEST_ANOTHER_SUBJECT();
+        expect(result).toBe(true);
+    });
+});
+        </pre>
+    </p>
+    <p>
+        <i class="fa fa-chevron-circle-right"></i>&nbsp;&nbsp;Pre-defined matchers:
+        <ul>
+            <li><i class="fa fa-circle"></i>&nbsp;<i>toBe</i> - uses === identity operator.</li>
+            <li><i class="fa fa-circle"></i>&nbsp;<i>toEqual</i> - uses == equal operator.</li>
+            <li><i class="fa fa-circle"></i>&nbsp;<i>toMatch</i> - compares string data</li>
+            <li><i class="fa fa-circle"></i>&nbsp;<i>toBeUndefined</i> - checkes for <i>undefined</i>.</li>
+            <li><i class="fa fa-circle"></i>&nbsp;<i>toBeDefined</i> - checkes for opposite of <i>undefined</i>.</li>
+            <li><i class="fa fa-circle"></i>&nbsp;<i>toBeNull</i> - checks for <i>null</i>.</li>
+            <li><i class="fa fa-circle"></i>&nbsp;<i>toBeFalsy</i> - checks against anything that evaluates to false, such as empty strings, zero, undefined, etc…</li>
+            <li><i class="fa fa-circle"></i>&nbsp;<i>toBeTruthy</i> - opposite of <i>toBeFalsy</i>.</li>
+            <li><i class="fa fa-circle"></i>&nbsp;<i>toContain</i> - search an array for the value.</li>
+            <li><i class="fa fa-circle"></i>&nbsp;<i>toBeLessThan</i> - numerics.</li>
+            <li><i class="fa fa-circle"></i>&nbsp;<i>toBeGreaterThan</i> - numerics.</li>
+            <li><i class="fa fa-circle"></i>&nbsp;<i>toThrow</i> - checks for exception.</li>
+        </ul>
     </p>
 </section>
 
